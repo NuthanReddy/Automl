@@ -1,0 +1,8 @@
+{% extends 'mlearn/base.html' %}
+{% block title %}Show Dataset{% endblock %}
+{% block show_dataset_active %}active{% endblock %}
+
+{% block body %}
+    <h1>{{name}}</h1>
+    {{ dframe | safe }}
+{% endblock %}

@@ -9,7 +9,7 @@
         <div class="col-sm-4 col-md-3">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="{% url 'mlearn:detail' competition.id %}">
+                    <a href="{% url 'mlearn:detail' competition.comp_id %}">
                         {% if competition.comp_logo %}
                             <img src="{{ competition.comp_logo.url }}" class="img-responsive">
                         {% else %}

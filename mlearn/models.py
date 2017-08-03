@@ -14,7 +14,7 @@ class Dataset(models.Model):
 
 
 class Competition(models.Model):
-    Comp_id = models.CharField(max_length=10)
+    comp_id = models.CharField(max_length=10)
     comp_name = models.CharField(max_length=50)
     comp_desc = models.CharField(max_length=1000)
     comp_logo = models.FileField(default='')

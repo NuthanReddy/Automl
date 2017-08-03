@@ -131,6 +131,5 @@ def detail(request, competition_id):
     if not request.user.is_authenticated():
         return render(request, 'mlearn/login.html')
     else:
-        users = User.objects.all()
-        competitions = get_object_or_404(Competition, pk=competition_id)
-        return render(request, 'mlearn/detail.html', {'competitions': competitions, 'user':users})
+        competition = get_object_or_404(Competition, pk=competition_id)
+        return render(request, 'mlearn/detail.html', {'competition': competition,})

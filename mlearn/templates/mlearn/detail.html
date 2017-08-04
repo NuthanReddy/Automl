@@ -1,12 +1,12 @@
 {% extends 'mlearn/base.html' %}
-{% block title %}{{ Cometitions }}{% endblock %}
+{% block title %}{{ Competitions }}{% endblock %}
 {% block competitions_active %}active{% endblock %}
 
 {% block body %}
 <div class="container-fluid songs-container">
    <div class="row">
      <!-- Left Album Info -->
-        <div class="col-sm-4 col-md-3">
+       <div class="col-sm-3 col-md-2">
             <div class="panel panel-default">
                 <div class="panel-body">
                     <a href="{% url 'mlearn:detail' competition.comp_id %}">
@@ -16,8 +16,52 @@
                             <h3>No image to display</h3>
                         {% endif %}
                     </a>
-                    <h1>{{ competition.comp_name }} <small>{{ competition.comp_desc }}</small></h1>
+                    <h4>{{ competition.comp_name }}</h4>
                 </div>
+            </div>
+       </div>
+       <!-- Right Song Info -->
+       <div class="col-sm-8 col-md-9">
+
+           <ul class="nav nav-pills" style="margin-bottom: 10px;">
+               <li role="presentation" class="active"><a>Description</a></li>
+               <li role="presentation" class="active"><a>Data</a></li>
+               <li role="presentation" class="active"><a>Leaderboard</a></li>
+               <li role="presentation" class="active"><a>Submit</a></li>
+           </ul>
+
+           <div class="panel panel-default">
+               <div class="panel-body">
+
+                   <!--<h3>Competition Details</h3>-->
+
+                   {% if error_message %}
+                   <p><strong>{{ error_message }}</strong></p>
+                   {% endif %}
+
+                   <table class="table">
+                       <thead>
+                       <h3>Competition Description</h3>
+                       </thead>
+                       <tbody>
+                       {{ competition.comp_desc }}
+                       </tbody>
+                   </table>
+                   <table class="table">
+                       <thead>
+                       <hr>
+                       <h3>Competition Data</h3>
+                       </thead>
+                       <tbody>
+                       <button type="button" class="btn-md btn-info"><h4><a
+                               href="{{ MEDIA_ROOT }}/media/{{ competition.comp_train.name }}">Training Data</a></h4>
+                       </button>&nbsp;&nbsp
+                       <button type="button" class="btn-md btn-info"><h4><a
+                               href="{{ MEDIA_ROOT }}/media/{{ competition.comp_test.name }}">Test Data</a></h4>
+                       </button>
+                       </tbody>
+                   </table>
+               </div>
             </div>
         </div>
     </div>

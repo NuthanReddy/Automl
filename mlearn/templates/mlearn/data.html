@@ -23,36 +23,36 @@
         <!-- Right Side Info -->
         <div class="col-sm-8 col-md-9">
 
-            <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation"><a href="{% url 'mlearn:detail' competition.comp_id %}">Description</a>
-                </li>
+            <ul class="nav nav-pills" style="margin-bottom:10px;">
+                <li role="presentation"><a href="{% url 'mlearn:detail' competition.comp_id %}">Description</a></li>
                 <li role="presentation" class="active"><a href="{% url 'mlearn:data' competition.comp_id %}">Data</a>
                 </li>
                 <li role="presentation"><a href="{% url 'mlearn:score' competition.comp_id %}">Leaderboard</a></li>
                 <li role="presentation"><a href="{% url 'mlearn:submit' competition.comp_id %}">Submit</a></li>
             </ul>
-
             <div class="panel panel-default">
                 <div class="panel-body">
-
                     {% if error_message %}
                     <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
-
                     <table class="table">
                         <thead>
-                        <hr>
                         <h3>Competition Data</h3>
+                        <hr>
                         </thead>
                         <tbody>
-                        <button type="button" class="btn-md btn-info"><h4><a style="text-decoration:none;"
-                                                                             target="_blank"
-                                                                             href="{{ competition.comp_train.url }}">Training
-                            Data</a></h4>
-                        </button>&nbsp;&nbsp
-                        <button type="button" class="btn-md btn-info"><h4><a style="text-decoration:none;"
-                                                                             target="_blank"
-                                                                             href="{{ MEDIA_ROOT }}/media/{{ competition.comp_test.name }}">Test Data</a></h4>
+                        <button type="button" class="btn btn-success btn-md">
+                            <a style="text-decoration:none; color:white;" target="_blank"
+                               href="{{ competition.comp_train.url }}">
+                                <span class="glyphicon glyphicon-download-alt"></span>Training Data
+                            </a>
+                        </button>
+                        &nbsp
+                        <button type="button" class="btn btn-success btn-md">
+                            <a style="text-decoration:none; color: white;" target="_blank"
+                               href="{{ competition.comp_test.url }}">
+                                <span class="glyphicon glyphicon-download-alt"></span>Test Data
+                            </a>
                         </button>
                         </tbody>
                     </table>

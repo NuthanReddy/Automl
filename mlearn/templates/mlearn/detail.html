@@ -33,16 +33,13 @@
 
            <div class="panel panel-default">
                <div class="panel-body">
-
-                   <!--<h3>Competition Details</h3>-->
-
                    {% if error_message %}
                    <p><strong>{{ error_message }}</strong></p>
                    {% endif %}
-
                    <table class="table">
                        <thead>
                        <h3>Competition Description</h3>
+                       <hr>
                        </thead>
                        <tbody>
                        {{ competition.comp_desc }}
@@ -50,7 +47,8 @@
                    </table>
                </div>
             </div>
-        </div>
+
+       </div>
     </div>
 </div>
 {% endblock %}

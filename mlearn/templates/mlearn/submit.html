@@ -5,7 +5,7 @@
 {% block body %}
 <div class="container-fluid songs-container">
     <div class="row">
-        <!-- Left Album Info -->
+        <!-- Left Side Info -->
         <div class="col-sm-3 col-md-2">
             <div class="panel panel-default">
                 <div class="panel-body">
@@ -20,12 +20,11 @@
                 </div>
             </div>
         </div>
-        <!-- Right Song Info -->
+        <!-- Right Side Info -->
         <div class="col-sm-8 col-md-9">
 
             <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation"><a href="{% url 'mlearn:detail' competition.comp_id %}">Description</a>
-                </li>
+                <li role="presentation"><a href="{% url 'mlearn:detail' competition.comp_id %}">Description</a></li>
                 <li role="presentation"><a href="{% url 'mlearn:data' competition.comp_id %}">Data</a></li>
                 <li role="presentation"><a href="{% url 'mlearn:score' competition.comp_id %}">Leaderboard</a></li>
                 <li role="presentation" class="active"><a
@@ -41,9 +40,10 @@
                     <table class="table">
                         <thead>
                         <h3>Submissions</h3>
+                        <hr>
                         </thead>
                         <tbody>
-                        {{ competition.comp_desc }}
+                        Submit your Code Here
                         </tbody>
                     </table>
                 </div>

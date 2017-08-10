@@ -66,7 +66,7 @@ def index(request):
     else:
         users = User.objects.all()
         competitions = Competition.objects.all()
-		#albums = Album.objects.all()
+        # albums = Album.objects.all()
         #song_results = Song.objects.all()
         query = request.GET.get("q")
         if query:
@@ -132,4 +132,28 @@ def detail(request, competition_id):
         return render(request, 'mlearn/login.html')
     else:
         competition = get_object_or_404(Competition, pk=competition_id)
-        return render(request, 'mlearn/detail.html', {'competition': competition,})
+        return render(request, 'mlearn/detail.html', {'competition': competition, })
+
+
+def data(request, competition_id):
+    if not request.user.is_authenticated():
+        return render(request, 'mlearn/login.html')
+    else:
+        competition = get_object_or_404(Competition, pk=competition_id)
+        return render(request, 'mlearn/data.html', {'competition': competition, })
+
+
+def score(request, competition_id):
+    if not request.user.is_authenticated():
+        return render(request, 'mlearn/login.html')
+    else:
+        competition = get_object_or_404(Competition, pk=competition_id)
+        return render(request, 'mlearn/score.html', {'competition': competition, })
+
+
+def submit(request, competition_id):
+    if not request.user.is_authenticated():
+        return render(request, 'mlearn/login.html')
+    else:
+        competition = get_object_or_404(Competition, pk=competition_id)
+        return render(request, 'mlearn/submit.html', {'competition': competition, })

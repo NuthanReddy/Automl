@@ -1,19 +1,8 @@
 from django.contrib.auth.models import Permission, User
 from django.db import models
 
-COMP_STATUS = (('A', 'Active'), ('C', 'Closed')
+COMP_STATUS = (('A', 'Active'), ('C', 'Closed'))
 
-
-class EnumField(models.Field):
-    def __init__(self, *args, **kwargs):
-        super(EnumField, self).__init__(*args, **kwargs)
-        assert self.choices, "Need choices for enumeration"
-
-    def db_type(self, connection):
-        if not all(isinstance(col, basestring) for col, _ in self.choices):
-            raise ValueError("MySQL ENUM values should be strings")
-        return "ENUM({})".format(','.join("'{}'".format(col)
-                                          for col, _ in self.choices))
 
 class Dataset(models.Model):
     user = models.ForeignKey(User)
@@ -32,8 +21,12 @@ class Competition(models.Model):
     comp_name = models.CharField(max_length=50)
     comp_desc = models.CharField(max_length=1000)
     comp_logo = models.FileField(default='')
+    comp_tsize = models.IntegerField(default=1)
     comp_train = models.FileField(default='')
     comp_test = models.FileField(default='')
+    comp_train2 = models.FileField(default='')
+    comp_test2 = models.FileField(default='')
+    comp_valid = models.FileField(default='')
     comp_algo = models.CharField(default='')
     comp_crit = models.CharField(default='')
     comp_status = models.CharField(max_length=1, choices=COMP_STATUS)
@@ -53,7 +46,6 @@ class Team(models.Model):
 
 
 class User(models.Model):
-    uid = models.
     user_id = models.CharField(max_length=10)
     mail_id = models.EmailField(max_length=100)
     username = models.CharField(max_length=50)

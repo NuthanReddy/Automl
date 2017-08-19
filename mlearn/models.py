@@ -12,11 +12,13 @@ ALGO = (('Reg', 'Regression'), ('LogReg', 'Logistic Regression'), ('RandF', 'Ran
 
 class UserProfile(models.Model):
     user = models.ForeignKey(User)
-    mail_id = models.EmailField(max_length=100)
-    username = models.CharField(max_length=50)
-    name = models.CharField(max_length=100)
-    rank = models.IntegerField(default=9999)
-    points = models.DecimalField(max_digits=100, decimal_places=2)
+    mail_id = models.EmailField(default='', max_length=100)
+    username = models.CharField(default='', max_length=50)
+    f_name = models.CharField(default='', max_length=100)
+    l_name = models.CharField(default='', max_length=100)
+    location = models.CharField(default='', max_length=50)
+    country = models.CharField(default='', max_length=50)
+    avatar = models.FileField(default='')
 
 
 class Team(models.Model):

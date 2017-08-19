@@ -19,11 +19,11 @@
 					<div class="col-sm-4 col-lg-2">
 						<div class="thumbnail">
 							<a href="{% url 'mlearn:detail' competition.id %}">
-								<img src="{{ competition.comp_logo.url }}" class="img-responsive">
+								<img src="{{ competition.logo.url }}" class="img-responsive">
 							</a>
 							<div class="caption">
-								<h2>{{ competition.comp_name }}</h2>
-								<h4>{{ competition.comp_desc }}</h4>
+								<h2>{{ competition.name }}</h2>
+								<h4>{{ competition.desc }}</h4>
                             <!-- View Details -->
                             <a href="{% url 'mlearn:detail' competition.id %}" class="btn btn-primary btn-sm" role="button">View Details</a>
                            </div>

@@ -7,7 +7,7 @@ class DatasetForm(forms.ModelForm):
 
     class Meta:
         model = Dataset
-        fields = ['file_type', 'file_name', 'data_file']
+        fields = ['type', 'name', 'file']
 
 
 class UserForm(forms.ModelForm):

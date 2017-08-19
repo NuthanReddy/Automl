@@ -9,14 +9,14 @@
        <div class="col-sm-3 col-md-2">
             <div class="panel panel-default">
                 <div class="panel-body">
-                    <a href="{% url 'mlearn:detail' competition.comp_id %}">
-                        {% if competition.comp_logo %}
-                            <img src="{{ competition.comp_logo.url }}" class="img-responsive">
+                    <a href="{% url 'mlearn:detail' competition.id %}">
+                        {% if competition.logo %}
+                        <img src="{{ competition.logo.url }}" class="img-responsive">
                         {% else %}
                             <h3>No image to display</h3>
                         {% endif %}
                     </a>
-                    <h4>{{ competition.comp_name }}</h4>
+                    <h4>{{ competition.name }}</h4>
                 </div>
             </div>
        </div>
@@ -24,11 +24,11 @@
        <div class="col-sm-8 col-md-9">
 
            <ul class="nav nav-pills" style="margin-bottom: 10px;">
-               <li role="presentation" class="active"><a href="{% url 'mlearn:detail' competition.comp_id %}">Description</a>
+               <li role="presentation" class="active"><a href="{% url 'mlearn:detail' competition.id %}">Description</a>
                </li>
-               <li role="presentation"><a href="{% url 'mlearn:data' competition.comp_id %}">Data</a></li>
-               <li role="presentation"><a href="{% url 'mlearn:score' competition.comp_id %}">Leaderboard</a></li>
-               <li role="presentation"><a href="{% url 'mlearn:submit' competition.comp_id %}">Submit</a></li>
+               <li role="presentation"><a href="{% url 'mlearn:data' competition.id %}">Data</a></li>
+               <li role="presentation"><a href="{% url 'mlearn:score' competition.id %}">Leaderboard</a></li>
+               <li role="presentation"><a href="{% url 'mlearn:submit' competition.id %}">Submit</a></li>
            </ul>
 
            <div class="panel panel-default">
@@ -42,7 +42,7 @@
                        <hr>
                        </thead>
                        <tbody>
-                       {{ competition.comp_desc }}
+                       {{ competition.desc }}
                        </tbody>
                    </table>
                </div>

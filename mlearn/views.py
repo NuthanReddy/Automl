@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
 from django.shortcuts import render, get_object_or_404
 from .forms import UserForm, DatasetForm
-from .models import Dataset, Competition
+from .models import *
 from pandas import read_csv
 from django.contrib.auth.models import User
 

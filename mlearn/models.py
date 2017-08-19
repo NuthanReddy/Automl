@@ -59,7 +59,6 @@ class Submission(models.Model):
     id = models.IntegerField(primary_key=True)
     time = models.DateTimeField(default=timezone.now, blank=True, null=True)
     score = models.DecimalField(default=0, max_digits=100, decimal_places=2)
-    rank = models.IntegerField(default=9999)
     language = models.CharField(default="Python", max_length=1, choices=LANG)
     algo = models.CharField(default="Reg", max_length=100, choices=ALGO)
 

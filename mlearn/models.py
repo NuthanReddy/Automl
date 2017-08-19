@@ -7,7 +7,7 @@ CRITERIA = (('D', 'Desc'), ('A', 'Asc'))
 LANG = (('Python', 'Python'), ('C', 'C'), ('C++', 'C++'), ('R', 'R'), ('Python3', 'Python3'), ('Scala', 'Scala'))
 ALGO = (('Reg', 'Regression'), ('LogReg', 'Logistic Regression'), ('RandF', 'Random Forest'),
         ('KNN', 'K - Nearest Neighbour'), ('NN', 'Neural Networks'), ('ACO', 'Ant Colony Optimization'),
-        ('SVM', 'Support Vector Machines'), ('PSA', 'Particle Swarm Algorithm'))
+        ('SVM', 'Support Vector Machines'), ('PSA', 'Particle Swarm Algorithm'), ('Oth', 'Other'))
 
 
 class UserProfile(models.Model):
@@ -37,9 +37,9 @@ class Competition(models.Model):
     sample = models.FileField(default='')
     train = models.FileField(default='')
     test = models.FileField(default='')
-    train2 = models.FileField(default='')
-    test2 = models.FileField(default='')
-    valid = models.FileField(default='')
+    train2 = models.FileField(default='', blank=True, null=True)
+    test2 = models.FileField(default='', blank=True, null=True)
+    valid = models.FileField(default='', blank=True, null=True)
     scoring_formula = models.Expression()
     gold = models.IntegerField(default=0)
     silver = models.IntegerField(default=0)

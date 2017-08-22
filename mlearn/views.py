@@ -1,10 +1,11 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.shortcuts import render, get_object_or_404
-from .forms import UserForm, DatasetForm
-from .models import *
-from pandas import read_csv
 from django.contrib.auth.models import User
+from django.shortcuts import render, get_object_or_404
+from pandas import read_csv
+
+from .forms import UserForm, DatasetForm, SubmitModel
+from .models import *
 
 ACCEPTED_FILE_TYPES = ['csv']
 
@@ -155,3 +156,25 @@ def submit(request, competition_id):
     else:
         competition = get_object_or_404(Competition, pk=competition_id)
         return render(request, 'mlearn/submit.html', {'competition': competition, })
+
+
+def model_upload(request):
+    if request.method == 'POST':
+        form = SubmitModel(request.POST, request.FILES)
+        if form.is_valid():
+            form.save()
+            competition = get_object_or_404(Competition, pk=id)
+            return render(request, 'mlearn/submit.html', {'competition': competition,})
+    else:
+        form = SubmitModel()
+    return render(request, 'mlearn/submit.html', {
+        'form': form
+    })
+
+
+def userprofile(request):
+    if not request.user.is_autheniticated():
+        return render(request, 'mlearn/login.html')
+    else:
+        user = get_object_or_404(User, pk=id)
+        return render(request, 'mlearn/user_profile.html', dict(user=id))

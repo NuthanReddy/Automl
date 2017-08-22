@@ -1,4 +1,5 @@
 from django.conf.urls import url
+
 from . import views
 
 app_name = 'mlearn'
@@ -15,4 +16,5 @@ urlpatterns = [
     url(r'^(?P<competition_id>[0-9]+)/submit$', views.submit, name='submit'),
     url(r'^add_dataset/$', views.create_dataset, name='create_dataset'),
     url(r'^(?P<dataset_id>[0-9]+)/delete_dataset/$', views.delete_dataset, name='delete_dataset'),
+    url(r'^userprofile/$', views.userprofile, name='userprofile'),
 ]

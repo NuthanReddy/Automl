@@ -24,14 +24,11 @@
         <div class="col-sm-8 col-md-9">
 
             <ul class="nav nav-pills" style="margin-bottom: 10px;">
-                <li role="presentation"><a href="{% url 'mlearn:detail' competition.id %}">Description</a>
-                </li>
+                <li role="presentation"><a href="{% url 'mlearn:detail' competition.id %}">Description</a></li>
                 <li role="presentation"><a href="{% url 'mlearn:data' competition.id %}">Data</a></li>
                 <li role="presentation" class="active"><a href="{% url 'mlearn:score' competition.id %}">Leaderboard</a>
                 </li>
-                <li role="presentation"><a href="{% url 'mlearn:submit' competition.id %}">Submit</a></li>
             </ul>
-
             <div class="panel panel-default">
                 <div class="panel-body">
 
@@ -41,7 +38,11 @@
 
                     <table class="table">
                         <thead>
-                        <h3>Leaderboard</h3>
+                        <h3>Leaderboard
+                            <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">Submit your
+                                Model
+                            </button>
+                        </h3>
                         <hr>
                         </thead>
                         <tbody>

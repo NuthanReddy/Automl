@@ -5,7 +5,7 @@
     border-radius: 4px 4px 0 0;
     margin: 0 auto;
     max-width: 1950px;
-    width: 100%
+    width: 100%;
 }
 
 .pageheader__container {
@@ -23,7 +23,7 @@
     justify-content: flex-start;
     z-index: 30;
     position: relative;
-    top: 1px
+    top: 1px;
 }
 
 .competition-header__top {
@@ -32,7 +32,7 @@
     border-radius: 4px 4px 0 0;
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
-    color: #FFF
+    color: #FFFFFF;
 }
 
 .competition-header__top-image {
@@ -46,7 +46,7 @@
     position: absolute;
     right: 0;
     top: 0;
-    z-index: 0
+    z-index: 0;
 }
 .competition-header__top-image:before {
     background-color: rgba(0, 0, 0, .3);
@@ -60,13 +60,13 @@
     right: 0;
     top: 0;
     width: 100%;
-    z-index: 1
+    z-index: 1;
 }
 
 .pageheader__top--safe {
     border-radius: 4px 4px 0 0;
     position: relative;
-    width: 100%
+    width: 100%;
 }
 
 
@@ -79,7 +79,7 @@
     display: flex;
     margin: 15px 0 20px;
     opacity: .8;
-    padding: 0 25px
+    padding: 0 25px;
 }
 
 .competition-header__classification-icon-wrapper {
@@ -88,7 +88,7 @@
     height: 20px;
     margin-right: 7px;
     position: relative;
-    width: 20px
+    width: 20px;
 }
 .competition-header__classification-icon {
     font-size: 12px;
@@ -96,7 +96,7 @@
     left: 50%;
     top: 50%;
     -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%)
+    transform: translate(-50%, -50%);
 }
 
 .competition-header__meta {
@@ -104,30 +104,30 @@
     display: -ms-flexbox;
     display: flex;
     padding: 0 25px 10px;
-    margin-top: 32px
+    margin-top: 32px;
 }
 
 .competition-header__info {
     -webkit-box-flex: 1;
     -ms-flex-positive: 1;
-    flex-grow: 1
+    flex-grow: 1;
 }
 
 .pageheader__sticky {
     max-width: 1950px;
-    width: 100%
+    width: 100%;
 }
 
 .competition-header__title {
     font-size: 22px;
     font-weight: 500;
     line-height: 1.25;
-    margin-bottom: 8px
+    margin-bottom: 8px;
 }
 
 .competition-header__subtitle {
     font-size: 18px;
-    margin-bottom: 32px
+    margin-bottom: 32px;
 }
 
 .competition-header__details {
@@ -139,28 +139,28 @@
     display: flex;
     font-size: 14px;
     line-height: 1.5;
-    margin-bottom: 4px
+    margin-bottom: 4px;
 }
 
 .competition-header__org-thumbnail {
-    margin-right: 8px
+    margin-right: 8px;
 }
 
 .competition-header__org-thumbnail-image {
     border-radius: 3px;
     width: 32px;
     height: 32px;
-    vertical-align: bottom
+    vertical-align: bottom;
 }
 
 .competition-header__details-sep {
     margin: 0 3px;
-    opacity: .6
+    opacity: .6;
 }
 
 .competition-header__prize {
-    -webkit-box-align: right;
-    -ms-flex-align: margin-right;
+    -webkit-box-align: inherit;
+    -ms-flex-align: start;
     align-items: flex-end;
     display: -webkit-box;
     display: -ms-flexbox;
@@ -170,7 +170,7 @@
     -ms-flex-direction: column;
     flex-direction: column;
     -ms-flex-negative: 1;
-    flex-shrink: 1
+    flex-shrink: 1;
 }
 
 .competition-header__prize-value {
@@ -182,14 +182,14 @@
 
 .competition-header__prize-text {
     font-size: 14px;
-    color: rgb(0,0,0)
+    color: rgb(0, 0, 0);
 }
 
 .competition-header__nav-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    width: 100%
+    width: 100%;
 }
 
 .pageheader__nav {
@@ -217,21 +217,21 @@
     overflow: hidden;
     padding-top: 0;
     text-overflow: ellipsis;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .pageheader__nav--competition {
-    margin-left: 10px
+    margin-left: 10px;
 }
 .pageheader__nav--dataset {
-    margin-left: 4px
+    margin-left: 4px;
 }
 .pageheader__nav-wrapper {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     width: 100%;
-    margin-left: 12px
+    margin-left: 12px;
     color:rgb(131,44,101);
 }
 
@@ -242,20 +242,20 @@
     -webkit-transition: all 50ms ease;
     transition: all 50ms ease;
     text-decoration: none;
-    padding: 0 4px
+    padding: 0 4px;
 }
 .pageheader__left-links--with-onclick {
-    outline: 0
+    outline: 0;
 }
 .pageheader__left-links--selected {
     color: rgb(0,0,0);
     /*border-bottom: 2px solid #FFF;*/
-    font-weight: 500
+    font-weight: 500;
 }
 .pageheader__left-links:hover {
     border-bottom: 2px solid #20BEFF;
     color: #20BEFF;
-    cursor: pointer
+    cursor: pointer;
 }
 .pageheader__left-links:after {
     display: block;
@@ -264,7 +264,7 @@
     color: transparent;
     overflow: hidden;
     visibility: hidden;
-    content: attr(data-link-text)
+    content: attr(data-link-text);
 }
 
 .pageheader__right-links-wrapper {
@@ -273,7 +273,7 @@
     display: flex;
     -ms-flex-direction: row;
     flex-direction: row;
-    margin-left: auto
+    margin-left: auto;
 }
 
 .pageheader__calltoaction {
@@ -282,7 +282,7 @@
     -webkit-box-sizing: border-box;
     box-sizing: border-box;
     -ms-flex: 0 0 auto;
-    flex: 0 0 auto
+    flex: 0 0 auto;
 }
 
 .content-box {
@@ -306,7 +306,7 @@
     margin-top: 24px;
     min-height: 48px;
     position: relative;
-    width: 100%
+    width: 100%;
 }
 
 .content-box__title-bar,
@@ -318,7 +318,7 @@
     display: -webkit-box;
     display: -ms-flexbox;
     -webkit-box-orient: horizontal;
-    -webkit-box-direction: normal
+    -webkit-box-direction: normal;
 }
 
 .content-box__title {
@@ -333,7 +333,7 @@
     font-size: 16px;
     line-height: 46px;
     text-align: left;
-    max-width: 100%
+    max-width: 100%;
 }
 
 .competition-leaderboard__nav {
@@ -341,7 +341,7 @@
     display: -ms-flexbox;
     display: flex;
     height: 46px;
-    margin-left: - 16px
+    margin-left: -16px;
 }
 
 .competition-leaderboard__nav-item--selected {
@@ -351,7 +351,7 @@
     color: #20BEFF;
     font-weight: 500;
     white-space: nowrap;
-    margin: 0 1px
+    margin: 0 1px;
 }
 
 /*.content-box__content-section,
@@ -368,7 +368,7 @@
     display: -ms-flexbox;
     display: flex;
     padding: 25px 24px;
-    line-height: 1.4em
+    line-height: 1.4em;
 }
 
 .competition-leaderboard__note {
@@ -385,18 +385,18 @@
     color: rgba(0, 0, 0, .4);
     font-size: 14px;
     line-height: 20px;
-    margin-left: 25px
+    margin-left: 25px;
 }
 
 .competition-leaderboard__legends {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    padding: 12px 24px 4px
+    padding: 12px 24px 4px;
 }
 
 .competition-leaderboard__table {
-    table-layout: ;
+    table-layout: inherit;
     border-collapse: collapse;
     width: 100%;
 
@@ -411,9 +411,8 @@
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    margin: 0;
     padding: 6px 16px;
-    margin-left: 15px;
+    margin: 0 0 0 15px;
     background: rgb(255, 170, 86);
 }
 
@@ -426,7 +425,7 @@
     flex-shrink: 0;
     margin-right: 2.22222222%;
     -ms-flex-preferred-size: 4.44444444%;
-    flex-basis: 4.44444444%
+    flex-basis: 4.44444444%;
 }
 
 .competition-leaderboard__th-team {
@@ -438,14 +437,14 @@
     flex-basis: 23.88888889%;
     -ms-flex-negative: 1;
     flex-shrink: 1;
-    text-align: left
+    text-align: left;
 }
 
 .competition-leaderboard__th-members {
     display: block;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowrap
+    white-space: nowrap;
 }
 
 .competition-leaderboard__th-score {
@@ -460,7 +459,7 @@
     -ms-flex-preferred-size: 9.44444444%;
     flex-basis: 9.44444444%;
     cursor: help;
-    text-align: right
+    text-align: right;
 }
 
 .competition-leaderboard__th-entries {
@@ -477,14 +476,14 @@
     white-space: nowrap;
     -ms-flex-preferred-size: 5.55555556%;
     flex-basis: 5.55555556%;
-    text-align: right
+    text-align: right;
 }
 
 /* project competetion table CSS */
 .leaderboard_table {
     border-collapse: collapse;
     width: 100%;
-	border : 1
+    border: 1px;
 }
 
 .leaderboard_th, .leaderboard_td {
@@ -492,9 +491,21 @@
     padding: 8px;
 }
 
-.leaderboard_tr:nth-child(even){background-color: #f2f2f2}
+.leaderboard_tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
 
 .leaderboard_th {
     background-color: #4CAF50;
     color: white;
+}
+
+.profile-img {
+    margin-top: -5px;
+    margin-right: 5px;
+    float: left;
+    background: 50% 50% no-repeat; /* 50% 50% centers image in div */
+    background-size: auto 100%; /* Interchange this value depending on prefering width vs. height */
+    width: 30px;
+    height: 30px;
 }

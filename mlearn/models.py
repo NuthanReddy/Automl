@@ -1,6 +1,6 @@
 from django.contrib.auth.models import Permission, User
-from django.utils import timezone
 from django.db import models
+from django.utils import timezone
 
 COMP_STATUS = (('A', 'Active'), ('C', 'Closed'))
 CRITERIA = (('D', 'Desc'), ('A', 'Asc'))
@@ -8,17 +8,6 @@ LANG = (('Python', 'Python'), ('C', 'C'), ('C++', 'C++'), ('R', 'R'), ('Python3'
 ALGO = (('Reg', 'Regression'), ('LogReg', 'Logistic Regression'), ('RandF', 'Random Forest'),
         ('KNN', 'K - Nearest Neighbour'), ('NN', 'Neural Networks'), ('ACO', 'Ant Colony Optimization'),
         ('SVM', 'Support Vector Machines'), ('PSA', 'Particle Swarm Algorithm'), ('Oth', 'Other'))
-
-
-class UserProfile(models.Model):
-    user = models.ForeignKey(User)
-    mail_id = models.EmailField(default='', max_length=100)
-    username = models.CharField(default='', max_length=50)
-    f_name = models.CharField(default='', max_length=100)
-    l_name = models.CharField(default='', max_length=100)
-    location = models.CharField(default='', max_length=50)
-    country = models.CharField(default='', max_length=50)
-    avatar = models.FileField(default='')
 
 
 class Team(models.Model):
@@ -56,6 +45,7 @@ class Competition(models.Model):
 
 
 class Submission(models.Model):
+    file_submission = models.FileField(default='', blank=False, null=False)
     team = models.ForeignKey(Team)
     comp = models.ForeignKey(Competition)
     id = models.IntegerField(primary_key=True)
@@ -63,6 +53,22 @@ class Submission(models.Model):
     score = models.DecimalField(default=0, max_digits=100, decimal_places=2)
     language = models.CharField(default="Python", max_length=1, choices=LANG)
     algo = models.CharField(default="Reg", max_length=100, choices=ALGO)
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User)
+    mail_id = models.EmailField(default='', max_length=100, blank=True)
+    username = models.CharField(default='', max_length=50, blank=True)
+    f_name = models.CharField(default='', max_length=100, blank=True)
+    l_name = models.CharField(default='', max_length=100, blank=True)
+    location = models.CharField(default='', max_length=50, blank=True)
+    country = models.CharField(default='', max_length=50)
+    avatar = models.ImageField(blank=True)
+
+
+class Registration(models.Model):
+    user = models.ForeignKey(User)
+    comp = models.ForeignKey(Competition)
 
 
 class Dataset(models.Model):

@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
-from .models import Dataset
+
+from .models import Dataset, Submission
 
 
 class DatasetForm(forms.ModelForm):
@@ -17,3 +18,8 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ['username', 'email', 'password']
 
+
+class SubmitModel(forms.ModelForm):
+    class Meta:
+        model = Submission
+        fields = ['file_submission', 'team', 'comp', 'language', 'algo']

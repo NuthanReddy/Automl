@@ -58,8 +58,36 @@ class Submission(models.Model):
     algo = models.CharField(default="Reg", max_length=100, choices=ALGO)
 
 
-class UserProfile(AbstractBaseUser):
+class UserProfileManager(models.Manager):
+    def get_queryset(self):
+        return super(UserProfileManager, self).get_queryset().filter(city='London')
 
+
+class CustomUserManager(BaseUserManager):
+    def _create_user(self, email, password, is_staff, is_superuser, **extra_fields):
+        """
+        Creates and saves a User with the given email and password
+        """
+        now = timezone.now()
+
+        if not email:
+            raise ValueError('Email is required')
+
+        email = self.normalize_email(email)
+        user = self.mode(email=email, is_staff=is_staff, is_active=True, is_superuser=is_superuser, last_login=now,
+                         date_joined=now, **extra_fields)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
+
+    def create_user(self, email, password=None, **extra_fields):
+        return self._create_user(email, password, False, False, **extra_fields)
+
+    def create_superuser(self, email, password, **extra_fields):
+        return self._create_user(email, password, password, True, True, **extra_fields)
+
+
+class UserProfile(AbstractBaseUser):
     mail_id = models.EmailField(default='', max_length=100, blank=True)
     first_name = models.CharField(default='', max_length=100, blank=True)
     last_name = models.CharField(default='', max_length=100, blank=True)
@@ -69,7 +97,7 @@ class UserProfile(AbstractBaseUser):
     avatar = models.ImageField(default='/media/propic.jpg', blank=True)
 
     USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ['username', 'first_name', 'last_name', 'location', 'country']
+    REQUIRED_FIELDS = ['first_name', 'last_name', 'username', 'location', 'country']
 
     objects = CustomUserManager()
 
@@ -94,42 +122,7 @@ class UserProfile(AbstractBaseUser):
         send_mail(subject, message, from_email, [self.email])
 
 
-class CustomUserManager(BaseUserManager):
-    def _create_user(self, email, username, password, is_staff, is_superuser, **extra_fields):
-        """
-        Creates and saves a User with the given email and password
-        """
-        now = timezone.now()
-
-        if not email:
-            raise ValueError('Email is required')
-
-        email = self.normalize_email(email)
-        user = self.mode(email=email, is_staff=is_staff, is_active=True, is_superuser=is_superuser, last_login=now,
-                         date_joined=now, **extra_fields)
-        user.set_password(password)
-        user.save(using=self._db)
-        return user
-
-    def create_user(self, email, password=None, **extra_fields):
-        return self._create_user(email, password, False, False, **extra_fields)
-
-    def create_superuser(self, email, password, **extra_fields):
-        return self._create_user(email, password, password, True, True, **extra_fields)
-
-
 class Registration(models.Model):
     user = models.ForeignKey(User)
     comp = models.ForeignKey(Competition)
 
-
-class Dataset(models.Model):
-    user = models.ForeignKey(User)
-    id = models.IntegerField(primary_key=True)
-    file = models.FileField(default='')
-    path = models.FilePathField(default='', max_length=500)
-    name = models.CharField(max_length=250)
-    type = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name

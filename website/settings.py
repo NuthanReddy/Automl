@@ -16,6 +16,7 @@ PROJECT_FOLDER = os.getcwd()
 # Application definition
 
 INSTALLED_APPS = [
+    'userprofile.apps.ProfileConfig',
     'mlearn.apps.MlearnConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -43,6 +44,7 @@ MIDDLEWARE_CLASSES = [
     'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'website.middleware'
 ]
 
 ROOT_URLCONF = 'website.urls'
@@ -101,3 +103,19 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
+
+LOGIN_REDIRECT_URL = '/home/'
+
+LOGIN_URL = '/mlearn/login/'
+
+LOGIN_EXEMPT_URLS = (
+    r'^mlearn/logout/$',
+    r'^mlearn/register/$',
+    r'^mlearn/reset-password/$',
+    r'^mlearn/reset-password/done/$',
+    r'^mlearn/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^mlearn/reset-password/complete/$',
+)
+
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025

@@ -1,6 +1,8 @@
-from django.shortcuts import render, HttpResponseRedirect, redirect
-from . import settings
 import os
+
+from django.shortcuts import render, redirect
+
+from . import settings
 
 
 def getfile(request, file_name):

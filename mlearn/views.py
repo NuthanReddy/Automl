@@ -1,9 +1,12 @@
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import logout
-from django.contrib.auth.models import User
+from django.db.models import Q
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, get_object_or_404
+from django.template.context_processors import csrf
 from pandas import read_csv
 
+from mlearn.backend import UserAuth
 from .forms import UserForm, DatasetForm, SubmitModel
 from .models import *
 
@@ -69,15 +72,34 @@ def index(request):
         competitions = Competition.objects.all()
         query = request.GET.get("q")
         if query:
-            competitions = competitions.filter(
-                Q(comp_name__icontains=query) |
-                Q(comp_desc__icontains=query)
-            ).distinct()
+            competitions = competitions.filter(Q(comp_name__icontains=query) | Q(comp_desc__icontains=query)).distinct()
             return render(request, 'mlearn/index.html', {
                 'competitions': competitions,
             })
         else:
             return render(request, 'mlearn/index.html', {'competitions': competitions})
+
+
+def login(request):
+    c = {}
+    c.update(csrf(request))
+    return render(request, 'mlearn/login.html', c)
+
+
+def auth_view(request):
+    username = request.POST.get('username', '')
+    password = request.POST.get('password', '')
+    user = UserAuth.authenticate(username=username, password=password)
+
+    if user is not None:
+        UserAuth.login(request, user)
+        return HttpResponseRedirect('/mlearn/index')
+    else:
+        return HttpResponseRedirect('/mlearn/invalid')
+
+
+def logged_in(request):
+    return render(request, 'mlearn/index.html', {'user': request.user})
 
 
 def login_user(request):

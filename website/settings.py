@@ -11,6 +11,8 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+PROJECT_FOLDER = os.getcwd()
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -22,6 +24,15 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+############################ AUTH ##############################
+
+AUTH_USER_MODEL = "mlearn.UserProfile"
+
+# Data Validation and Authentication
+AUTHENTICATION_BACKENDS = ('mlearn.backend.UserAuth',)
+
+################################################################
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.security.SecurityMiddleware',
@@ -90,4 +101,3 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
-AUTH_PROFILE_MODULE = 'mlearn.UserProfile'

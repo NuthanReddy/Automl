@@ -1,7 +1,7 @@
 from django import forms
-from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 
-from .models import Dataset, Submission
+from .models import Dataset, Submission, UserProfile
 
 
 class DatasetForm(forms.ModelForm):
@@ -11,12 +11,27 @@ class DatasetForm(forms.ModelForm):
         fields = ['type', 'name', 'file']
 
 
-class UserForm(forms.ModelForm):
-    password = forms.CharField(widget=forms.PasswordInput)
+class UserProfileCreationForm(UserCreationForm):
+    def __init__(self):
+        super(UserProfileCreationForm, self).__init__(*args, **kargs)
+        del self.fields['username']
 
     class Meta:
-        model = User
+        model = UserProfile
         fields = ['username', 'email', 'password']
+
+
+class UserProfileChangeForm(UserChangeForm):
+    """
+    Updating user profile info.
+    """
+
+    def __init__(self):
+        super(UserProfileChangeForm, self).__init__(*args, **kargs)
+        del self.fields['username']
+
+    class Meta:
+        model = UserProfile
 
 
 class SubmitModel(forms.ModelForm):

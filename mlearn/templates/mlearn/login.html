@@ -5,6 +5,18 @@
 {% block body %}
 <div class="container-fluid text-center">
 
+    {% if form.errors %}
+        <p>Sorry, that's not a valid username or password</p>
+    {% endif %}
+
+    <form action="/mlearn/auth" methode="post">{% csrf_token %}
+        <label for="username">User name:</label>
+        <input type="text" name="username" value="" id="username">
+        <label for="password">Password:</label>
+        <input type="password" name="password" value="" id="password">
+
+        <input type="submit" value="login"/>
+    </form>
         <div class="row">
             <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-default">

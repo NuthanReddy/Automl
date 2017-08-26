@@ -1,0 +1,52 @@
+{% extends 'mlearn/base.html' %}
+{% block title %}Add a New Dataset{% endblock %}
+{% block datasets_active %}active{% endblock %}
+
+{% block body %}
+    <div class="container-fluid">
+
+        <div class="row">
+
+            <div class="col-sm-12 col-md-7">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>Add a New Dataset</h3>
+                        {% if error_message %}
+                            <p><strong>{{ error_message }}</strong></p>
+                            <p><strong>{{ error_message }}</strong></p>
+                        {% endif %}
+                        <form class="form-horizontal" role="form" action="" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            {% include 'mlearn/form_template.html' %}
+                            <div class="form-group">
+                                <div class="col-sm-offset-2 col-sm-10">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-12 col-md-5">
+                <div class="panel panel-default">
+                    <div class="panel-body">
+                        <h3>What is Cyborg?</h3>
+                        <p>Cyborg is an app that allows you to upload and analyze your data.</p>
+                        <h3>How do I add data?</h3>
+                        <p>First, create a new Dataset by filling out the form on this page. Once an dataset is created
+                            you will be able to see the model.</p>
+                        <h3>What are some Dataset best practices?</h3>
+                        <ul>
+                            <li>clean Data</li>
+                            <li>Use common image formats such as CSV and TXT</li>
+                            <li>Remain under the 2MB limit.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+{% endblock %}

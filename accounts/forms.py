@@ -3,29 +3,6 @@ from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 
 
-class UserProfileCreationForm(UserCreationForm):
-    def __init__(self):
-        super(UserProfileCreationForm, self).__init__(*args, **kargs)
-        del self.fields['email']
-
-    class Meta:
-        model = User
-        fields = ['first_name', 'last_name', 'username', 'email', 'password', 'location', 'country']
-
-
-class UserProfileChangeForm(UserChangeForm):
-    """
-    Updating user profile info.
-    """
-
-    def __init__(self):
-        super(UserProfileChangeForm, self).__init__(*args, **kargs)
-        del self.fields['email']
-
-    class Meta:
-        model = User
-
-
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
 
@@ -37,7 +14,7 @@ class RegistrationForm(UserCreationForm):
             'last_name',
             'email',
             'password1',
-            'password2',
+            'password2'
         )
 
     def save(self, commit=True):

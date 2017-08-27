@@ -16,8 +16,8 @@ PROJECT_FOLDER = os.getcwd()
 # Application definition
 
 INSTALLED_APPS = [
-    'accounts.apps.UserConfig',
-    'mlearn.apps.MlearnConfig',
+    'accounts.apps.AccountsConfig',
+    'comp.apps.CompConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -28,10 +28,10 @@ INSTALLED_APPS = [
 
 ############################ AUTH ##############################
 
-AUTH_USER_MODEL = "mlearn.UserProfile"
+# AUTH_USER_MODEL = "accounts.UserProfile"
 
 # Data Validation and Authentication
-AUTHENTICATION_BACKENDS = ('mlearn.backend.UserAuth',)
+#AUTHENTICATION_BACKENDS = ('accounts.backend.UserAuth',)
 
 ################################################################
 
@@ -106,15 +106,15 @@ MEDIA_URL = '/media/'
 
 LOGIN_REDIRECT_URL = '/'
 
-LOGIN_URL = '/accounts/login/'
+LOGIN_URL = '/account/login/'
 
 LOGIN_EXEMPT_URLS = (
-    r'^accounts/logout/$',
-    r'^accounts/register/$',
-    r'^accounts/reset-password/$',
-    r'^accounts/reset-password/done/$',
-    r'^accounts/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
-    r'^accounts/reset-password/complete/$',
+    r'^account/logout/$',
+    r'^account/register/$',
+    r'^account/reset-password/$',
+    r'^account/reset-password/done/$',
+    r'^account/reset-password/confirm/(?P<uidb64>[0-9A-Za-z]+)-(?P<token>.+)/$',
+    r'^account/reset-password/complete/$',
 )
 
 EMAIL_HOST = 'localhost'

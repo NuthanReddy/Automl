@@ -1,6 +1,12 @@
 from django import forms
 
-from .models import Submission
+from .models import Submission, Team
+
+
+class TeamForm(forms.ModelForm):
+    class Meta:
+        model = Team
+        fields = ['lead', 'member']
 
 
 class SubmitModel(forms.ModelForm):

@@ -6,10 +6,10 @@ from django.contrib import admin
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^competitions/', include('comp.urls')),
-    url(r'^accounts/', include('accounts.urls')),
+    url(r'^account/', include('accounts.urls', namespace='accounts')),
     # url(r'^media/(?P<file_name>[0-9a-zA-Z._]+)$', views.getfile, name='getfile'),
     # url(r'^media/train_(?P<competition_id>[0-9]+).txt$', views.getfile, name='gettrain'),
-    url(r'^', include('mlearn.urls')),
+    url(r'^', include('comp.urls')),
 ]
 
 if settings.DEBUG:

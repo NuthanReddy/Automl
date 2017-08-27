@@ -2,11 +2,13 @@
 
 {% block body %}
     <div class="container">
+        <div style="margin:auto; display: table-cell; text-align: center;">
         <h1>Register</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>
         </form>
+        </div>
     </div>
 {% endblock %}

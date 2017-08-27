@@ -1,15 +1,22 @@
 <html>
 <head>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
-          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {% block head %}
-        <title>Base</title>
-    {% endblock %}
+    <meta charset="UTF-8">
+    <title>{% block title %}Data Crunch{% endblock %}</title>
+    {% load staticfiles %}
+    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'comp/css/style.css' %}"/>
+    <link rel="stylesheet" type="mlearn/main.css" href="{% static 'comp/css/main.css' %}"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+    <script src="{% static 'comp/js/main.js' %}"></script>
+    <script src="{% static 'comp/js/automl.js' %}"></script>
+    <link rel="stylesheet" type="mlearn/app_new.css" href="{% static 'comp/css/app_new.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'comp/css/automl.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:300,400|Yellowtail" rel="stylesheet">
 </head>
 <body>
-<br>
 <div class="container">
     <nav class="navbar navbar-default">
         <div class="container-fluid">
@@ -21,12 +28,12 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="/">Social Network</a>
+                <a class="navbar-brand" href="/">Data Crunch</a>
             </div>
             <div id="navbar" class="navbar-collapse collapse">
                 {% if user.is_authenticated %}
                     <ul class="nav navbar-nav">
-                        <li><a href="{% url 'comp:index' %}">Home</a></li>
+                        <li><a href="{% url 'comp:index' %}">Competitions</a></li>
                         <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
                         <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
                         <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
@@ -50,6 +57,13 @@
 {% block body %}
     <h1>Base</h1>
 {% endblock %}
+<div class="rela-block footer">
+    <p>Data Crunch</p>
+    <br>
+    <p>One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary
+        man,<br><br> Do you want to be one among. <br><br>Use it as a starting point to create something more
+        unique.</p>
+</div>
 </body>
 <script
         src="https://code.jquery.com/jquery-3.1.1.min.js"

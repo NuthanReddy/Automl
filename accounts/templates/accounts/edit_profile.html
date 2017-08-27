@@ -6,13 +6,16 @@
 {% endblock %}
 
 {% block body %}
-    <div class="container">
+    <div class="container" style="display: table">
+        <div style="margin:auto; display: table-cell; text-align: center;">
+            <br>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
             <button type="submit">Submit</button>
         </form>
         <br>
+        </div>
     </div>
 
 {% endblock %}

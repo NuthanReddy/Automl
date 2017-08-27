@@ -4,34 +4,57 @@
     transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), color 0.3s ease;
 }
 
+.navbar {
+    margin: 0px;
+    border-radius: 0px;
+    background-color: #47494D;
+}
+
+a.navbar-brand {
+    font-family: 'Satisfy', cursive;
+    color: #4fa7f7 !important;
+}
+
+a.navbar-brand:hover {
+    font-family: 'Satisfy', cursive;
+    color: #4fa7f7 !important;
+}
+
+.navbar-default {
+    border: 0px;
+}
+
+.navbar-default .navbar-nav > li > a {
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    color: #a9a9a9;
+    font-weight: 500;
+}
+
+.navbar-default .navbar-nav > li > a:hover {
+    font-family: "Helvetica Neue";
+    font-size: 14px;
+    color: #FFF;
+    font-weight: 500;
+}
+
+.row {
+    margin-top: 10px;
+}
+
 .rela-block {
     display: block;
     position: relative;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
 
 .rela-inline {
     display: inline-block;
     position: relative;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
 }
 
 .floated {
     display: inline-block;
     position: relative;
-    margin: auto;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     float: left;
 }
 
@@ -78,11 +101,9 @@
 }
 
 body {
-    font-family: "Roboto";
-    font-size: 18px;
-    letter-spacing: 2px;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
     font-weight: 400;
-    line-height: 24px;
     background-color: #f4f4f4;
 }
 
@@ -93,13 +114,7 @@ body {
 
 .overlay {
     z-index: -1;
-    display: none;
-    position: fixed;
     margin: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     background-color: rgba(0, 0, 0, 0.7);
     text-align: center;
     opacity: 0;
@@ -134,13 +149,11 @@ body {
 }
 
 .overlay-desc {
-    font-family: "Roboto";
-    font-size: 16px;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
     letter-spacing: 0px;
     font-weight: 400;
-    line-height: 20px;
     height: calc(100% - 40px);
-    margin: 20px;
     border-left: 1px solid #ccc;
     width: calc(100% - 520px);
     padding: 20px 20px 20px 40px;
@@ -167,22 +180,22 @@ body {
 }
 
 .desc-title {
-    font-family: "Montserrat";
-    font-size: 24px;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
     letter-spacing: 2px;
     font-weight: 400;
-    line-height: 28px;
+    line-height: 18px;
     margin-bottom: 5px;
 }
 
 .desc-author {
-    font-family: "Montserrat";
-    font-size: 18px;
+    font-family: "Helvetica Neue";
+    font-size: 14px;
     letter-spacing: 2px;
     font-weight: 400;
-    line-height: 24px;
+    line-height: 16px;
     color: #999;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .close {
@@ -190,15 +203,11 @@ body {
     display: none;
     position: absolute;
     margin: 0;
-    top: 10px;
-    left: 0;
-    right: 15px;
-    bottom: 0;
-    font-family: "Montserrat";
-    font-size: 24px;
+    font-family: "Helvetica Neue";
+    font-size: 15px;
     letter-spacing: 0px;
     font-weight: 400;
-    line-height: 30px;
+    line-height: 18px;
     cursor: pointer;
     color: #444;
     padding: 5px;
@@ -207,11 +216,7 @@ body {
 .nav-bar {
     display: none;
     position: fixed;
-    margin: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    margin: 0px;
     z-index: 10;
     height: 70px;
     background-color: #fff;
@@ -220,16 +225,13 @@ body {
 
 .nav-container {
     width: 100%;
-    max-width: 1400px;
 }
 
 .logo {
     font-family: "Yellowtail";
-    font-size: 34px;
+    font-size: 20px;
     letter-spacing: 0px;
     font-weight: 400;
-    line-height: 70px;
-    margin: 0 30px;
     cursor: pointer;
 }
 
@@ -238,15 +240,13 @@ body {
 }
 
 .nav-div {
-    font-family: "Roboto";
-    font-size: 17px;
+    font-family: "Helvetica Neue";
+    font-size: 12px;
     letter-spacing: 2px;
     font-weight: 400;
-    line-height: 24px;
-    height: 70px;
-    line-height: 70px;
+    line-height: 15px;
     margin: 0 10px;
-    color: #999;
+    color: #1b992f;
     overflow: hidden;
 }
 
@@ -256,7 +256,7 @@ body {
 }
 
 .nav-div li:hover {
-    color: #2ebaae;
+    color: #ba3c54;
 }
 
 .nav-links {
@@ -265,8 +265,7 @@ body {
 }
 
 .search-container {
-    padding-right: 15px;
-    margin-left: 0px;
+    margin: 0px;
 }
 
 .sign-div {
@@ -302,7 +301,7 @@ body {
 }
 
 .nav-search {
-    font-family: "Roboto";
+    font-family: "Helvetica Neue";
     font-size: 16px;
     letter-spacing: 0px;
     font-weight: 400;
@@ -324,13 +323,9 @@ body {
 
 .menu-card {
     display: none;
-    position: fixed;
+    position: relative;
     margin: 0;
-    top: 72px;
-    left: 420px;
-    right: 0;
-    bottom: 0;
-    font-family: "Montserrat";
+    font-family: "Helvetica Neue";
     font-size: 16px;
     letter-spacing: 1px;
     font-weight: 400;
@@ -356,17 +351,13 @@ body {
 .menu-background {
     height: 0px;
     width: 0px;
-    top: 5%;
-    left: 93%;
-    border-radius: 100%;
+    border-radius: 10px;
     background-color: #fff;
 }
 
 .menu-background.active {
     height: 540px;
     width: 540px;
-    top: 50%;
-    left: 50%;
     -webkit-transition: 0.3s cubic-bezier(0.5, 0, 0.2, 1), height 0.3s cubic-bezier(1, 0.15, 0.6, 1), width 0.3s cubic-bezier(1, 0.15, 0.6, 1);
     transition: 0.3s cubic-bezier(0.5, 0, 0.2, 1), height 0.3s cubic-bezier(1, 0.15, 0.6, 1), width 0.3s cubic-bezier(1, 0.15, 0.6, 1);
 }
@@ -375,10 +366,6 @@ body {
     display: none;
     position: absolute;
     margin: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
     padding: 15px;
     opacity: 0;
     -webkit-transition: 0.1s ease;
@@ -393,7 +380,7 @@ body {
 
 .menu-links {
     overflow: hidden;
-    color: #999;
+    color: #333399;
 }
 
 .menu-links li {
@@ -403,7 +390,7 @@ body {
 }
 
 .menu-links li:hover {
-    color: #2ebaae;
+    color: #a532ba;
 }
 
 .menu-links.sub-nav-links {
@@ -416,37 +403,31 @@ body {
 
 .container {
     z-index: 1;
-    width: 92%;
-    max-width: 1126px;
+    width: 100%;
+    margin: 0px;
+    padding: 0px;
     background-color: #f4f4f4;
-    margin: 10px auto;
-    padding: 70px 0;
 }
 
 .profile-card {
-    width: calc(100% - 40px);
-    padding-top: 10px;
-    padding-bottom: 50px;
-    margin: 70px auto 30px;
-    background-color: #4fa7f7;
-    box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.26);
+    width: 100%;
+    background-color: #3D4045;
+    border-top: 1px solid #38393C;
+    color: white;
+    padding: 40px;
+    margin-bottom: 15px;
 }
 
 .profile-pic {
     display: none;
     position: absolute;
     margin: 0;
-    top: -90px;
-    left: 50%;
-    right: 0;
-    bottom: 0;
     -webkit-transform: translateX(-50%);
     transform: translateX(-50%);
     height: 180px;
     width: 180px;
-    border: 10px solid #fff;
+    border: 0px solid #fff;
     border-radius: 100%;
-    background: url("https://s.gravatar.com/avatar/c559a80eb90c6e13161853298925c61a?s=80") center no-repeat;
     background-size: cover;
 }
 
@@ -457,8 +438,8 @@ body {
 }
 
 .user-name {
-    font-family: "Montserrat";
-    font-size: 24px;
+    font-family: "Helvetica Neue";
+    font-size: 20px;
     letter-spacing: 3px;
     font-weight: 400;
     line-height: 30px;
@@ -467,7 +448,7 @@ body {
 
 .user-desc {
     letter-spacing: 1px;
-    color: #1d9932;
+    color: #b7bfc5;
 }
 
 .profile-card-stats {
@@ -499,13 +480,12 @@ body {
 }
 
 .image {
-    width: 240px;
+    width: 200px;
     height: 200px;
     cursor: pointer;
     margin: 0 20px 40px;
     overflow: hidden;
     border-radius: 5px;
-    border: 10px solid #fff;
     box-shadow: 0 2px 6px -2px rgba(0, 0, 0, 0.26);
     background-color: rgba(0, 0, 0, 0.4);
     background-size: cover !important;
@@ -591,7 +571,7 @@ body {
 
 @media screen and (max-width: 1000px) {
     .container {
-        max-width: 562px;
+        max-width: 100%;
     }
 
     .overlay-card {

@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>{% block title %}Data Crunch{% endblock %}</title>
@@ -18,45 +17,59 @@
     <link href="https://fonts.googleapis.com/css?family=Montserrat|Roboto:300,400|Yellowtail" rel="stylesheet">
 </head>
 <body>
-<title> Vinayaka swami</title>
-<div class="overlay">
-    <div class="abs-center overlay-card">
-        <div class="close">X</div>
-        <div class="floated overlay-image">
-            <div class="abs-center post-image"></div>
-        </div>
-        <div class="floated overlay-desc">
-            <div class="rela-block desc-title"></div>
-            <div class="rela-block desc-author"></div>
-            <div class="rela-block desc-desc"></div>
-        </div>
-    </div>
-</div>
-<div class="nav-bar">
-    <div class="horz-center nav-container">
-        <div class="floated logo"><a href="{% url 'comp:index' %}">Data Crunch</a></div>
-        <ul class="floated nav-div nav-links">
-            <li class="rela-inline"><a href="{% url 'comp:index' %}">Competitions</a></li>
-        </ul>
-        <ul class="floated right nav-div nav-links">
-            <li class="rela-inline menu-toggle"><a href="{% url 'accounts:logout' %}">Logout</a></li>
-        </ul>
-        <!--
-         <ul class="floated right nav-div">
-          <li class="rela-inline menu-toggle"><a href="% url 'accounts:view_profile' user %}">/a></li>
-         </ul>
-         -->
-        <div class="menu-card">
-            <div class="abs-center menu-background"></div>
-            <div class="menu-content">
-                <ul class="menu-links sub-nav-links">
-                    <li class="rela-block">My Profile</li>
-                </ul>
+<div class="container">
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">Data Crunch</a>
             </div>
-        </div>
-    </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                {% if user.is_authenticated %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'comp:index' %}">Competitions</a></li>
+                        <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
+                        <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
+                        <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                    </ul>
+                {% else %}
+                    <ul class="nav navbar-nav">
+                        <li><a href="{% url 'accounts:reset_password' %}">Reset Password</a></li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'accounts:login' %}">Login</a></li>
+                        <li><a href="{% url 'accounts:register' %}">Register</a></li>
+                    </ul>
+                {% endif %}
+            </div><!--/.nav-collapse -->
+        </div><!--/.container-fluid -->
+    </nav>
 </div>
 {% block body %}
 {% endblock %}
+
+<div class="rela-block footer">
+    <p>Data Crunch</p>
+    <br>
+    <p>One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary
+        man,<br><br> Do you want to be one among. <br><br>Use it as a starting point to create something more
+        unique.</p>
+</div>
 </body>
+<script
+        src="https://code.jquery.com/jquery-3.1.1.min.js"
+        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+        crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+        crossorigin="anonymous"></script>
 </html>

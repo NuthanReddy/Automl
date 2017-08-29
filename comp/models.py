@@ -10,15 +10,16 @@ ALGO = (('Reg', 'Regression'), ('LogReg', 'Logistic Regression'), ('RandF', 'Ran
         ('SVM', 'Support Vector Machines'), ('PSA', 'Particle Swarm Algorithm'), ('Oth', 'Other'))
 
 
-class Team(models.Model):
-    user = models.ManyToManyField(User)
-    id = models.IntegerField(primary_key=True)
-    name = models.CharField(default='', max_length=50)
-    lead = models.CharField(max_length=50)
-    member = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
+#
+# class Team(models.Model):
+#     user = models.ManyToManyField(User)
+#     id = models.IntegerField(primary_key=True)
+#     name = models.CharField(default='', max_length=50)
+#     lead = models.CharField(max_length=50)
+#     member = models.CharField(max_length=50)
+#
+#     def __str__(self):
+#         return self.name
 
 
 class Competition(models.Model):
@@ -54,7 +55,7 @@ class Competition(models.Model):
 
 class Submission(models.Model):
     file_submission = models.FileField(default='', blank=False, null=False)
-    team = models.ForeignKey(Team)
+    user = models.ForeignKey(User)
     comp = models.ForeignKey(Competition)
     id = models.IntegerField(primary_key=True)
     time = models.DateTimeField(default=timezone.now, blank=True, null=True)
@@ -63,7 +64,7 @@ class Submission(models.Model):
     algo = models.CharField(default="Reg", max_length=100, choices=ALGO)
 
     def __str__(self):
-        return self.team.name + ' ' + self.comp.name
+        return self.user.username + ' ' + self.comp.name
 
 
 class Registration(models.Model):

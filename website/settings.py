@@ -30,8 +30,9 @@ INSTALLED_APPS = [
 
 # AUTH_USER_MODEL = "accounts.UserProfile"
 
+
 # Data Validation and Authentication
-#AUTHENTICATION_BACKENDS = ('accounts.backend.UserAuth',)
+# AUTHENTICATION_BACKENDS = ('accounts.backend.UserAuth',)
 
 ################################################################
 

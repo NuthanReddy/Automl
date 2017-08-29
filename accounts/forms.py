@@ -5,6 +5,7 @@ from django.contrib.auth.models import User
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
+    location = forms.CharField(required=True)
 
     class Meta:
         model = User

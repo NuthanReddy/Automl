@@ -548,11 +548,11 @@ body {
 
 @media screen and (max-width: 1300px) {
     .container {
-        max-width: 843px;
+        max-width: 100%;
     }
 
     .overlay-card {
-        max-width: 803px;
+        max-width: 100%;
         padding: 0;
     }
 

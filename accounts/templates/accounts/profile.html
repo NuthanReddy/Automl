@@ -1,29 +1,45 @@
 {% extends 'base.html' %}
 
-
 {% block head %}
     <title>Profile</title>
 {% endblock %}
+
 {% block nav %}
-    <li><a href="{% url 'accounts:edit_profile' %}">Edit Profile</a></li>
-    <li><a href="{% url 'accounts:change_password' %}">Change Password</a></li>
 {% endblock %}
+
 {% block body %}
-    <div class="container" style="display: table">
-        <div style="margin:auto; display: table-cell; text-align: center;">
-            <h1>Profile</h1>
-            <p>Username: {{ user }}</p>
-            <p>First name: {{ user.first_name }}</p>
-            <p>Last name: {{ user.last_name }}</p>
-            <p>Email: {{ user.email }}</p>
-            <p>Description: {{ user.userprofile.description }}</p>
-            <p>Phone: {{ user.userprofile.phone }}</p>
-            <p>City: {{ user.userprofile.city }}</p>
-            <p>Website: {{ user.userprofile.website }}</p>
-            {% if user.userprofile.image %}
-                <img src="{{ user.userprofile.image.url }}" width="240">
-            {% endif %}
-        </div>
+    <div class="container-fluid  bg-1 text-center">
+        <h3>Who Am I?</h3>
+        <img src="{{ user.userprofile.image.url }}" class="img-circle" alt="Headshot">
+        <h3>I'm an adventurer</h3>
     </div>
 
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3">
+            <div class="panel panel-default">
+                <div class="panel-body" style="padding-left: 40px;">
+                    {% if error_message %}
+                        <p><strong>{{ error_message }}</strong></p>
+                    {% endif %}
+                    <h2>Profile</h2>
+                    <hr>
+                    <pre>Username: {{ user }}</pre>
+                    <pre>First name: {{ user.first_name }}</pre>
+                    <pre>Last name: {{ user.last_name }}</pre>
+                    <pre>Email: {{ user.email }}</pre>
+                    <pre>Description: {{ user.userprofile.description }}</pre>
+                    <pre>Phone: {{ user.userprofile.phone }}</pre>
+                    <pre>City: {{ user.userprofile.city }}</pre>
+                    <pre>Website: {{ user.userprofile.website }}</pre>
+                    {% if user.userprofile.image %}
+                        <img src="{{ user.userprofile.image.url }}" width="240">
+                    {% endif %}
+                </div>
+                <div class="panel-footer">
+                    Wanna Edit something? <a href="{% url 'accounts:edit_profile' %}">Click Here</a> to edit.
+                </div>
+            </div>
+        </div>
+
+    </div>
 {% endblock %}

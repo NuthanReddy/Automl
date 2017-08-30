@@ -40,8 +40,11 @@
                         <table class="table">
                             <thead>
                             <h3>Leaderboard
-                                <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">Submit your
-                                    Model
+                                <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
+                                    <a href="{% url 'comp:submit' competition.id %}"
+                                       style="text-decoration: none; color: white;">
+                                        Submit your Model
+                                    </a>
                                 </button>
                             </h3>
                             <hr>

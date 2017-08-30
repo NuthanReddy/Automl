@@ -35,14 +35,20 @@ def data(request, competition_id):
 
 @login_required
 def score(request, competition_id):
-    competition = get_object_or_404(Competition, pk=competition_id)
-    return render(request, 'comp/score.html', {'competition': competition,})
+    if request.method == 'GET':
+        competition = get_object_or_404(Competition, pk=competition_id)
+        return render(request, 'comp/score.html', {'competition': competition,})
+    elif request.method == 'POST':
+        competition = get_object_or_404(Competition, pk=competition_id)
+        user = request.user
+        return render(request, 'comp/submit.html', {'competition': competition, 'user': user})
 
 
 @login_required
 def submit(request, competition_id):
+    user = request.user
     competition = get_object_or_404(Competition, pk=competition_id)
-    return render(request, 'comp/submit.html', {'competition': competition,})
+    return render(request, 'comp/submit.html', {'competition': competition, 'user': user})
 
 
 @login_required

@@ -8,38 +8,213 @@
 {% endblock %}
 
 {% block body %}
+    <body>
     <div class="container-fluid  bg-1 text-center">
         <h3>Who Am I?</h3>
         <img src="{{ user.userprofile.image.url }}" class="img-circle" width="120" height="120" alt="Headshot">
         <h3>I'm an adventurer</h3>
     </div>
+    <div class="container-fluid">
+      <div class="row">
 
-    <div class="row">
-        <div class="col-md-6 col-md-offset-3">
-            <div class="panel panel-default">
-                <div class="panel-body" style="padding-left: 40px;">
-                    {% if error_message %}
-                        <p><strong>{{ error_message }}</strong></p>
-                    {% endif %}
-                    <h2>Profile</h2>
-                    <hr>
-                    <pre>Username: {{ user }}</pre>
-                    <pre>First name: {{ user.first_name }}</pre>
-                    <pre>Last name: {{ user.last_name }}</pre>
-                    <pre>Email: {{ user.email }}</pre>
-                    <pre>Description: {{ user.userprofile.description }}</pre>
-                    <pre>Phone: {{ user.userprofile.phone }}</pre>
-                    <pre>City: {{ user.userprofile.city }}</pre>
-                    <pre>Website: {{ user.userprofile.website }}</pre>
-                    <!--{% if user.userprofile.image %}
-                        <img src="{{ user.userprofile.image.url }}" width="240">
-                    {% endif %} -->
-                </div>
-                <div class="panel-footer">
-                    Wanna Edit something? <a href="{% url 'accounts:edit_profile' %}">Click Here</a> to edit.
-                </div>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+          <h1 class="page-header">Competitions</h1>
+
+          <div class="row placeholders">
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Competition 1</h4>
             </div>
-        </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Competition 2</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Competition 3</h4>
+            </div>
+            <div class="col-xs-6 col-sm-3 placeholder">
+              <img src="data:image/gif;base64,R0lGODlhAQABAIAAAHd3dwAAACH5BAAAAAAALAAAAAABAAEAAAICRAEAOw==" width="200" height="200" class="img-responsive" alt="Generic placeholder thumbnail">
+              <h4>Competition 4</h4>
+            </div>
+          </div>
 
+          <h2 class="sub-header">{Competition Name} Submissions</h2>
+          <div class="table-responsive">
+            <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>File Name</th>
+                  <th>Language Used</th>
+                  <th>Algorithm Used</th>
+                  <th>Score</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>File_1</td>
+                  <td>Python</td>
+                  <td>Regression</td>
+                  <td>0.199</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>3</td>
+                  <td>file_3</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+				  <td>4</td>
+                  <td>File_4</td>
+                  <td>Python</td>
+                  <td>Regression</td>
+                  <td>0.49</td>
+                </tr>
+				<tr>
+                  <td>5</td>
+                  <td>NN_submission</td>
+                  <td>python</td>
+                  <td>Neural Networks</td>
+                  <td>0.86</td>
+                </tr>
+				<tr>
+                  <td>6</td>
+                  <td>reg_submission</td>
+                  <td>Python</td>
+                  <td>Regression</td>
+                  <td>0.37</td>
+                </tr>
+				<tr>
+                  <td>7</td>
+                  <td>reg_submission</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.78</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+				<tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr><tr>
+                  <td>2</td>
+                  <td>file_2</td>
+                  <td>python</td>
+                  <td>random Forest</td>
+                  <td>0.56</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
     </div>
+  </body>
 {% endblock %}

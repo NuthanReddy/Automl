@@ -10,7 +10,7 @@
 {% block body %}
     <div class="container-fluid  bg-1 text-center">
         <h3>Who Am I?</h3>
-        <img src="{{ user.userprofile.image.url }}" class="img-circle" alt="Headshot">
+        <img src="{{ user.userprofile.image.url }}" class="img-circle" width="120" height="120" alt="Headshot">
         <h3>I'm an adventurer</h3>
     </div>
 
@@ -31,9 +31,9 @@
                     <pre>Phone: {{ user.userprofile.phone }}</pre>
                     <pre>City: {{ user.userprofile.city }}</pre>
                     <pre>Website: {{ user.userprofile.website }}</pre>
-                    {% if user.userprofile.image %}
+                    <!--{% if user.userprofile.image %}
                         <img src="{{ user.userprofile.image.url }}" width="240">
-                    {% endif %}
+                    {% endif %} -->
                 </div>
                 <div class="panel-footer">
                     Wanna Edit something? <a href="{% url 'accounts:edit_profile' %}">Click Here</a> to edit.

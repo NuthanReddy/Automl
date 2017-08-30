@@ -39,7 +39,11 @@
                         {% endblock %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                         <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle" >
+                            <span></span>
+                            <small>Welcome, </small>{{ user.username }}</a>
+                    </li>
                     </ul>
                 {% else %}
                     <ul class="nav navbar-nav">

@@ -12,7 +12,7 @@ pre {
 }
 
 .bg-1 {
-    background-color: #1abc9c; /* Green */
+    background-color: #435c8d; /* Green */
     color: #ffffff;
 }
 
@@ -26,6 +26,10 @@ pre {
     color: #555555;
 }
 
+.bg-4 {
+    background-color: #2f2f2f;
+    color: #fff;
+}
 .navbar {
     margin: 0px;
     border-radius: 0px;

@@ -4,6 +4,9 @@
     transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1), color 0.3s ease;
 }
 
+.img-rounded {
+    border: 1px solid #f4f4f4;
+}
 pre {
     background-color: transparent !important;
     border: none !important;
@@ -30,6 +33,7 @@ pre {
     background-color: #3D4045;
     color: #fff;
 }
+
 .navbar {
     margin: 0px;
     border-radius: 0px;

@@ -12,19 +12,36 @@
                 </div>
             </div>
         </div>
-        <div class="rela-block content">
-            {% if competitions %}
-                {% for competition in competitions %}
-                    <div class="rela-inline image">
-                        <a href="{% url 'comp:detail' competition.id %}">
-                            <img src="{{ competition.logo.url }}" class="img-responsive">
-                        </a>
-                    </div>
-                {% endfor %}
-            {% endif %}
+    </div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
+                <h3 class="page-header">Competitions</h3>
+                <div class="row">
+                    {% if competitions %}
+                        {% for competition in competitions %}
+                            <div class="col-md-3">
+                                <div class="thumbnail">
+                                    <div class="caption">
+                                        <a href="{% url 'comp:detail' competition.id %}">
+                                            <h4>{{ competition.name }}</h4>
+                                        </a>
+                                        <p>{{ competition.desc }}</p>
+                                    </div>
+                                    <a href="{% url 'comp:detail' competition.id %}">
+                                        <img class="img-responsive img-rounded" src="{{ competition.logo.url }}"
+                                             alt="{{ competition.name }}">
+                                    </a>
+                                    <div class="caption">
+                                        <a href="" class="label label-info">{Total Users}</a>
+                                        <a href="" class="label label-success">Register</a>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
         </div>
-    </div>
-    </div>
-    </div>
     </div>
 {% endblock %}

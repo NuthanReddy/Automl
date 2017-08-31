@@ -8,6 +8,7 @@ from accounts.forms import (
     RegistrationForm,
     EditProfileForm
 )
+from comp.models import Registration, Submission
 
 
 def register(request):
@@ -25,9 +26,13 @@ def register(request):
 def view_profile(request, pk=None):
     if pk:
         user = User.objects.get(pk=pk)
+        regs = Registration.objects.all().filter(user=user)
+        subs = Submission.objects.all().filter(user=user)
     else:
         user = request.user
-    args = {'user': user}
+        regs = Registration.objects.all().filter(user=user)
+        subs = Submission.objects.all().filter(user=user)
+    args = {'user': user, 'registrations': regs, 'submissions': subs,}
     return render(request, 'accounts/profile.html', args)
 
 

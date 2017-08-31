@@ -39,11 +39,13 @@
                         {% endblock %}
                     </ul>
                     <ul class="nav navbar-nav navbar-right">
-                         <li class="dropdown">
-                        <a data-toggle="dropdown" class="dropdown-toggle" >
-                            <span></span>
-                            <small>Welcome, </small>{{ user.username }}</a>
-                    </li>
+                        <li class="dropdown">
+                            <a data-toggle="dropdown" class="dropdown-toggle">
+                                <span></span>
+                                <small>Welcome,</small>
+                                {{ user.username }}
+                            </a>
+                        </li>
                     </ul>
                 {% else %}
                     <ul class="nav navbar-nav">

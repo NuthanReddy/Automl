@@ -39,9 +39,14 @@
                         <table class="table">
                             <thead>
                             <h3>Competition Description
-                                <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
-                                    Register
-                                </button>
+                                {% if not registered %}
+                                    <button class="btn btn-primary pull-right btn-sm RbtnMargin">
+                                        <a style="color: white; text-decoration: none;"
+                                           href="{% url 'comp:register' competition.id %}">
+                                            Register
+                                        </a>
+                                    </button>
+                                {% endif %}
                             </h3>
                             <hr>
                             </thead>

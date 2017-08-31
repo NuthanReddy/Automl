@@ -22,8 +22,9 @@
                         <div class="col-md-3">
                             <div class="thumbnail">
                                 <div class="caption">
-                                    <h4>{{ registration.comp }}</h4>
-                                    <p>{{ registration.comp.desc }}</p>
+                                    <a href="{% url 'comp:detail' registration.comp.id %}">
+                                        <h4>{{ registration.comp.name }}</h4>
+                                    </a>
                                     <p><a href="" class="label label-danger">{Rank}</a>
                                         <a href="" class="label label-default">{Total Users}</a></p>
                                 </div>
@@ -49,7 +50,7 @@
                         <tbody>
                         {% for submission in submissions %}
                             <tr>
-                                <td>1</td>
+                                <td>{{ forloop.counter }}</td>
                                 <td>{{ submission.comp.name }}</td>
                                 <td>{{ submission.file_submission.name }}</td>
                                 <td>{{ submission.language }}</td>

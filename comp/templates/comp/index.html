@@ -26,18 +26,14 @@
                                         <a href="{% url 'comp:detail' competition.id %}">
                                             <h4>{{ competition.name }}</h4>
                                         </a>
-                                        <p>{{ competition.desc }}</p>
+                                        <p><a href="" class="label label-info">{Total Users}</a></p>
                                     </div>
-                                    <a href="{% url 'comp:detail' competition.id %}">
-                                        <img class="img-responsive img-rounded" src="{{ competition.logo.url }}"
-                                             alt="{{ competition.name }}">
-                                    </a>
-                                    <div class="caption">
-                                        <a href="" class="label label-info">{Total Users}</a>
-                                        <a href="" class="label label-success">Register</a>
+                                        <a href="{% url 'comp:detail' competition.id %}">
+                                            <img class="img-responsive img-rounded" src="{{ competition.logo.url }}"
+                                                 alt="{{ competition.name }}">
+                                        </a>
                                     </div>
                                 </div>
-                            </div>
                         {% endfor %}
                     {% endif %}
                 </div>

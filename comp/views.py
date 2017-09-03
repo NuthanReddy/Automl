@@ -10,7 +10,8 @@ ACCEPTED_FILE_TYPES = ['csv']
 @login_required
 def index(request):
     competitions = Competition.objects.all()
-    return render(request, 'comp/index.html', {'competitions': competitions,})
+    registrations = Registration.objects.all()
+    return render(request, 'comp/index.html', {'competitions': competitions, 'registrations': registrations,})
 
 
 @login_required
@@ -20,7 +21,7 @@ def detail(request, competition_id):
         registered = Registration.objects.get(comp=competition, user=request.user)
     except Registration.DoesNotExist:
         registered = False
-    return render(request, 'comp/detail.html', {'competition': competition, 'registered': registered})
+    return render(request, 'comp/detail.html', {'competition': competition, 'registered': registered,})
 
 
 @login_required
@@ -31,13 +32,16 @@ def data(request, competition_id):
 
 @login_required
 def score(request, competition_id):
+    competition = get_object_or_404(Competition, pk=competition_id)
     if request.method == 'GET':
-        competition = get_object_or_404(Competition, pk=competition_id)
-        return render(request, 'comp/score.html', {'competition': competition,})
+        try:
+            registered = Registration.objects.get(comp=competition, user=request.user)
+        except Registration.DoesNotExist:
+            registered = False
+        return render(request, 'comp/score.html', {'competition': competition, 'registered': registered,})
     elif request.method == 'POST':
-        competition = get_object_or_404(Competition, pk=competition_id)
         user = request.user
-        return render(request, 'comp/submit.html', {'competition': competition, 'user': user})
+        return render(request, 'comp/submit.html', {'competition': competition, 'user': user,})
 
 
 @login_required
@@ -51,7 +55,7 @@ def register(request, competition_id):
 def submit(request, competition_id):
     user = request.user
     competition = get_object_or_404(Competition, pk=competition_id)
-    return render(request, 'comp/submit.html', {'competition': competition,})
+    return render(request, 'comp/submit.html', {'competition': competition, 'user': user,})
 
 
 @login_required

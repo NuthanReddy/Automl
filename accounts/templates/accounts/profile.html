@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load cust_tags %}
 {% block head %}
     <title>Profile</title>
 {% endblock %}
@@ -25,8 +25,9 @@
                                     <a href="{% url 'comp:detail' registration.comp.id %}">
                                         <h4>{{ registration.comp.name }}</h4>
                                     </a>
-                                    <p><a href="" class="label label-danger">{Rank}</a>
-                                        <a href="" class="label label-default">{{ user_count }}</a></p>
+                                    <p><a href="" class="label label-danger">Rank {{ registration.comp|rank:user }}</a>
+                                        <a href="" class="label label-default">{{ registration.comp|comp_all }}
+                                            Users</a></p>
                                 </div>
                                 <img src="{{ registration.comp.logo.url }}" alt="{{ registration.comp.name }}">
                             </div>

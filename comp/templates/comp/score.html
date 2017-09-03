@@ -40,12 +40,14 @@
                         <table class="table">
                             <thead>
                             <h3>Leaderboard
+                                {% if registered %}
                                 <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
                                     <a href="{% url 'comp:submit' competition.id %}"
                                        style="text-decoration: none; color: white;">
                                         Submit your Model
                                     </a>
                                 </button>
+                                {% endif %}
                             </h3>
                             <hr>
                             </thead>

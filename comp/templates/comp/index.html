@@ -1,4 +1,5 @@
 {% extends 'comp/base.html' %}
+{% load cust_tags %}
 {% block title %}All Competitions{% endblock %}
 {% block competition_active %}active{% endblock %}
 {% block body %}
@@ -25,8 +26,8 @@
                                     <div class="caption">
                                         <a href="{% url 'comp:detail' competition.id %}">
                                             <h4>{{ competition.name }}</h4>
+                                            <a href="" class="label label-info">{{ competition|comp_all }} Users</a>
                                         </a>
-                                        <p><a href="" class="label label-info">{Total Users}</a></p>
                                     </div>
                                         <a href="{% url 'comp:detail' competition.id %}">
                                             <img class="img-responsive img-rounded" src="{{ competition.logo.url }}"

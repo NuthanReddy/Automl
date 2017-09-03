@@ -1,7 +1,7 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
-from comp.models import Registration, Competition
+from comp.models import Registration, Competition, Submission
 from .forms import SubmitModel
 
 ACCEPTED_FILE_TYPES = ['csv']
@@ -33,14 +33,16 @@ def data(request, competition_id):
 @login_required
 def score(request, competition_id):
     competition = get_object_or_404(Competition, pk=competition_id)
+    subs = Submission.objects.filter(comp=competition).order_by('score').reverse()
+    user = request.user
     if request.method == 'GET':
         try:
-            registered = Registration.objects.get(comp=competition, user=request.user)
+            registered = Registration.objects.get(comp=competition, user=user)
         except Registration.DoesNotExist:
             registered = False
-        return render(request, 'comp/score.html', {'competition': competition, 'registered': registered,})
+        args = {'competition': competition, 'registered': registered, 'user': user, 'submissions': subs}
+        return render(request, 'comp/score.html', args)
     elif request.method == 'POST':
-        user = request.user
         return render(request, 'comp/submit.html', {'competition': competition, 'user': user,})
 
 

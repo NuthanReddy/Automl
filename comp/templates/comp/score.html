@@ -1,4 +1,5 @@
 {% extends 'comp/base.html' %}
+{% load cust_tags %}
 {% block title %}{{ Competitions }}{% endblock %}
 {% block competitions_active %}active{% endblock %}
 
@@ -41,12 +42,12 @@
                             <thead>
                             <h3>Leaderboard
                                 {% if registered %}
-                                <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
-                                    <a href="{% url 'comp:submit' competition.id %}"
-                                       style="text-decoration: none; color: white;">
-                                        Submit your Model
-                                    </a>
-                                </button>
+                                    <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
+                                        <a href="{% url 'comp:submit' competition.id %}"
+                                           style="text-decoration: none; color: white;">
+                                            Submit your Model
+                                        </a>
+                                    </button>
                                 {% endif %}
                             </h3>
                             <hr>
@@ -60,14 +61,24 @@
                             <thead>
                             <tr>
                                 <th>#</th>
-                                <th>△1w</th>
-                                <th>Team Name</th>
-                                <th>Team Member</th>
+                                <th>User Name</th>
+                                <th>Language</th>
+                                <th>Algorithm</th>
                                 <th>Score</th>
                                 <th>Entries</th>
                             </tr>
                             </thead>
                             <tbody>
+                            {% for submission in submissions %}
+                                <tr>
+                                    <td>{{ forloop.counter }}</td>
+                                    <td>{{ submission.user }}</td>
+                                    <td>{{ submission.language }}</td>
+                                    <td>{{ submission.algo }}</td>
+                                    <td>{{ submission.score }}</td>
+                                    <td>{{ submission.user|entries:competition }}</td>
+                                </tr>
+                            {% endfor %}
                             </tbody>
                         </table>
                     </div>

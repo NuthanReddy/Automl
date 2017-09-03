@@ -1,8 +1,8 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404
 
+from comp.forms import SubmitForm
 from comp.models import Registration, Competition, Submission
-from .forms import SubmitModel
 
 ACCEPTED_FILE_TYPES = ['csv']
 
@@ -43,7 +43,7 @@ def score(request, competition_id):
         args = {'competition': competition, 'registered': registered, 'user': user, 'submissions': subs}
         return render(request, 'comp/score.html', args)
     elif request.method == 'POST':
-        return render(request, 'comp/submit.html', {'competition': competition, 'user': user,})
+        return render(request, 'comp/submit.html', {'competition': competition})
 
 
 @login_required
@@ -55,19 +55,42 @@ def register(request, competition_id):
 
 @login_required
 def submit(request, competition_id):
-    user = request.user
-    competition = get_object_or_404(Competition, pk=competition_id)
-    return render(request, 'comp/submit.html', {'competition': competition, 'user': user,})
+    if request.method == 'GET':
+        form = SubmitForm()
+        args = {'form': form}
+        return render(request, 'comp/submit.html', args)
+    elif request.method == 'POST':
+        form = SubmitForm(request.POST, request.FILES)
+        if form.is_valid():
+            newsub = form.save(commit=False)
+            newsub.file_submission = request.FILES['file_submission']
+            newsub.user = request.user
+            newsub.comp = get_object_or_404(Competition, pk=competition_id)
+            newsub.language = form.cleaned_data['language']
+            newsub.algo = form.cleaned_data['algo']
+            newsub.score = 0.5
+            newsub.save()
+            # need to change
+            subs = Submission.objects.filter(comp=newsub.comp).order_by('score').reverse()
+            try:
+                registered = Registration.objects.get(comp=newsub.comp, user=request.user)
+            except Registration.DoesNotExist:
+                registered = False
+            return render(request, 'comp/score.html', {'competition': newsub.comp, 'user': request.user,
+                                                       'registered': registered, 'submissions': subs})
+        else:
+            args = {'form': form,}
+            return render(request, 'comp/submit.html', args)
 
 
 @login_required
 def model_upload(request):
     if request.method == 'POST':
-        form = SubmitModel(request.POST, request.FILES)
+        form = SubmitForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             competition = get_object_or_404(Competition, pk=id)
             return render(request, 'comp/submit.html', {'competition': competition,})
     else:
-        form = SubmitModel()
+        form = SubmitForm()
     return render(request, 'comp/submit.html', {'form': form})

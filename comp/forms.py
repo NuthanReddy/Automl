@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import Submission
+from comp.models import Submission
 
 
 # class TeamForm(forms.ModelForm):
@@ -9,7 +9,7 @@ from .models import Submission
 #         fields = ['lead', 'member']
 
 
-class SubmitModel(forms.ModelForm):
+class SubmitForm(forms.ModelForm):
     class Meta:
         model = Submission
-        fields = ['file_submission', 'user', 'comp', 'language', 'algo']
+        fields = ['file_submission', 'language', 'algo']

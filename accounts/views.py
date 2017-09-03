@@ -31,7 +31,7 @@ def view_profile(request, pk=None):
     else:
         user = request.user
         regs = Registration.objects.all().filter(user=user)
-        subs = Submission.objects.all().filter(user=user)
+        subs = Submission.objects.all().filter(user=user).order_by('time').reverse()
     user_count = Registration.objects.values_list('comp', flat=True).distinct().count()
     args = {'user': user, 'registrations': regs, 'submissions': subs, 'user_count': user_count,}
     return render(request, 'accounts/profile.html', args)

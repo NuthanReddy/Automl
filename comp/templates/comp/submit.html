@@ -19,7 +19,7 @@
 
                     <h2>Submit your Model</h2>
                     <hr>
-                    <form method="post">
+                    <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         {{ form.as_p }}
                         <button type="submit">Submit</button>

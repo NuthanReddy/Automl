@@ -45,6 +45,7 @@
                             <th>File Name</th>
                             <th>Language Used</th>
                             <th>Algorithm Used</th>
+                            <th>Time Submitted</th>
                             <th>Score</th>
                         </tr>
                         </thead>
@@ -56,6 +57,7 @@
                                 <td>{{ submission.file_submission.name }}</td>
                                 <td>{{ submission.language }}</td>
                                 <td>{{ submission.algo }}</td>
+                                <td>{{ submission.time }}</td>
                                 <td>{{ submission.score }}</td>
                             </tr>
                         {% endfor %}

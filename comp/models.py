@@ -57,7 +57,6 @@ class Submission(models.Model):
     file_submission = models.FileField(default='', blank=False, null=False)
     user = models.ForeignKey(User)
     comp = models.ForeignKey(Competition)
-    id = models.IntegerField(primary_key=True)
     time = models.DateTimeField(default=timezone.now, blank=True, null=True)
     score = models.DecimalField(default=0, max_digits=100, decimal_places=2)
     language = models.CharField(default="Python", max_length=100, choices=LANG)

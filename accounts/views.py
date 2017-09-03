@@ -32,7 +32,8 @@ def view_profile(request, pk=None):
         user = request.user
         regs = Registration.objects.all().filter(user=user)
         subs = Submission.objects.all().filter(user=user)
-    args = {'user': user, 'registrations': regs, 'submissions': subs,}
+        u_count = Registration.objects.values_list('comp', flat=True).distinct().count()
+    args = {'user': user, 'registrations': regs, 'submissions': subs, 'user_count': u_count,}
     return render(request, 'accounts/profile.html', args)
 
 

@@ -4,7 +4,7 @@ from accounts.models import UserProfile
 
 
 class UserProfileAdmin(admin.ModelAdmin):
-    list_display = ('user', 'user_info', 'phone', 'image')
+    list_display = ('user', 'user_info', 'location', 'phone', 'image')
 
     def user_info(self, obj):
         return obj.description

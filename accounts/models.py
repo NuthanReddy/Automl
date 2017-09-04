@@ -1,7 +1,10 @@
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import User
+from django.contrib.auth.models import User
 from django.db import models
 from django.db.models.signals import post_save
+
+User._meta.get_field('email')._unique = True
 
 
 class UserProfileManager(models.Manager):
@@ -12,7 +15,8 @@ class UserProfileManager(models.Manager):
 class UserProfile(models.Model):
     user = models.OneToOneField(User)
     description = models.CharField(max_length=100, default='')
-    phone = models.IntegerField(default=0)
+    location = models.CharField(default='', max_length=100, null=True, blank=True)
+    phone = models.IntegerField(default=0, null=True, blank=True)
     image = models.ImageField(default='profile_image/propic.jpg', upload_to='profile_image', blank=True)
 
     objects = UserProfileManager()
@@ -24,9 +28,8 @@ class UserProfile(models.Model):
         return self.user.username
 
 
-def create_profile(sender, **kwargs):
+def create_profile(**kwargs):
     if kwargs['created']:
-        user_profile = UserProfile.objects.create(user=kwargs['instance'])
-
+        UserProfile.objects.get_or_create(user=kwargs['instance'])
 
 post_save.connect(create_profile, sender=User)

@@ -2,10 +2,13 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm, UserChangeForm
 from django.contrib.auth.models import User
 
+from accounts.models import UserProfile
+
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
     location = forms.CharField(required=True)
+    phone = forms.IntegerField(required=False)
 
     class Meta:
         model = User
@@ -15,7 +18,9 @@ class RegistrationForm(UserCreationForm):
             'last_name',
             'email',
             'password1',
-            'password2'
+            'password2',
+            'location',
+            'phone'
         )
 
     def save(self, commit=True):
@@ -26,6 +31,10 @@ class RegistrationForm(UserCreationForm):
 
         if commit:
             user.save()
+            user_profile = UserProfile.objects.get(user=user)
+            user_profile.location = self.cleaned_data['location']
+            user_profile.phone = self.cleaned_data['phone']
+            user_profile.save()
 
         return user
 
@@ -36,8 +45,7 @@ class EditProfileForm(UserChangeForm):
     class Meta:
         model = User
         fields = (
-            'email',
             'first_name',
             'last_name',
-            'password'
+            'email'
         )

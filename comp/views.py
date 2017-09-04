@@ -4,11 +4,18 @@ from django.shortcuts import render, get_object_or_404
 from comp.forms import SubmitForm
 from comp.models import Registration, Competition, Submission
 
+# from pyspark.sql import SparkSession
+
 ACCEPTED_FILE_TYPES = ['csv']
 
 
-# ss = SparkSession("local[3]")
+# spark = SparkSession \
+#    .builder \
+#    .appName("Data Crunch") \
+#    .config("spark.some.config.option", "some-value") \
+#    .getOrCreate()
 
+# df = spark.read.csv.options(header='true', inferSchema='true').load("examples/src/main/resources/people.json")
 
 @login_required
 def index(request):

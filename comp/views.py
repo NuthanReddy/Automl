@@ -7,6 +7,9 @@ from comp.models import Registration, Competition, Submission
 ACCEPTED_FILE_TYPES = ['csv']
 
 
+# ss = SparkSession("local[3]")
+
+
 @login_required
 def index(request):
     competitions = Competition.objects.all()
@@ -63,6 +66,13 @@ def submit(request, competition_id):
         form = SubmitForm(request.POST, request.FILES)
         if form.is_valid():
             newsub = form.save(commit=False)
+            file_type = newsub.file_submission.url.split('.')[-1].lower()
+            if file_type not in ACCEPTED_FILE_TYPES:
+                args = {
+                    'form': form,
+                    'error_message': 'File must be in CSV format',
+                }
+                return render(request, 'comp/submit.html', args)
             newsub.file_submission = request.FILES['file_submission']
             newsub.user = request.user
             newsub.comp = get_object_or_404(Competition, pk=competition_id)
@@ -82,15 +92,3 @@ def submit(request, competition_id):
             args = {'form': form,}
             return render(request, 'comp/submit.html', args)
 
-
-@login_required
-def model_upload(request):
-    if request.method == 'POST':
-        form = SubmitForm(request.POST, request.FILES)
-        if form.is_valid():
-            form.save()
-            competition = get_object_or_404(Competition, pk=id)
-            return render(request, 'comp/submit.html', {'competition': competition,})
-    else:
-        form = SubmitForm()
-    return render(request, 'comp/submit.html', {'form': form})

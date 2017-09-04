@@ -17,6 +17,7 @@
         <div class="row">
             <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-1 main">
                 <h3 class="page-header">My Competitions</h3>
+                {% if registrations %}
                 <div class="row">
                     {% for registration in registrations %}
                         <div class="col-md-3">
@@ -25,19 +26,28 @@
                                     <a href="{% url 'comp:detail' registration.comp.id %}">
                                         <h4>{{ registration.comp.name }}</h4>
                                     </a>
-                                    <p><a href="" class="label label-danger">Rank {{ registration.comp|rank:user }}</a>
-                                        <a href="" class="label label-default">{{ registration.comp|comp_all }}
-                                            Users</a></p>
+                                    <p>
+                                        {% if submissions %}
+                                            <a href=""
+                                               class="label label-danger">Rank {{ registration.comp|rank:user }}</a>
+                                        {% endif %}
+                                        <a href="" class="label label-default">{{ registration.comp|comp_all }}Users</a>
+                                    </p>
                                 </div>
                                 <img src="{{ registration.comp.logo.url }}" alt="{{ registration.comp.name }}">
                             </div>
                         </div>
                     {% endfor %}
                 </div>
+                {% else %}
+                    <h5>You have no registrations yet. Check out some competitions <a
+                            href="{% url 'comp:index' %}">Here</a></h5>
+                {% endif %}
                 <!-- submission display block start-->
                 <h3 class="page-header">My Submissions</h3>
                 <div class="table-responsive">
                     <table class="table table-striped">
+                        {% if submissions %}
                         <thead>
                         <tr>
                             <th>#</th>
@@ -61,6 +71,10 @@
                                 <td>{{ submission.score }}</td>
                             </tr>
                         {% endfor %}
+                        {% else %}
+                            <h5>You have no submissions Yet. Register for a Competition and submit your model.</h5>
+                        {% endif %}
+
                         </tbody>
                     </table>
                 </div>

@@ -9,9 +9,9 @@
 
 {% block body %}
     <div class="container-fluid  bg-1 text-center">
-        <h3>Who Am I?</h3>
+        <h3>{{ user.first_name }} {{ user.last_name }}</h3>
         <img src="{{ user.userprofile.image.url }}" class="img-circle" width="120" height="120" alt="Headshot">
-        <h3>I'm an adventurer</h3>
+        <h3>{{ user.userprofile.description }}</h3>
     </div>
     <div class="container-fluid">
         <div class="row">
@@ -31,7 +31,8 @@
                                             <a href=""
                                                class="label label-danger">Rank {{ registration.comp|rank:user }}</a>
                                         {% endif %}
-                                        <a href="" class="label label-default">{{ registration.comp|comp_all }}Users</a>
+                                        <a href="" class="label label-default">{{ registration.comp|comp_all }}
+                                            Users</a>
                                     </p>
                                 </div>
                                 <img src="{{ registration.comp.logo.url }}" alt="{{ registration.comp.name }}">

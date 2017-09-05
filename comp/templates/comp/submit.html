@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
-
-
+{% load cust_tags %}
 {% block head %}
     <title>Profile</title>
 {% endblock %}
@@ -16,8 +15,7 @@
                     {% if error_message %}
                         <p><strong>{{ error_message }}</strong></p>
                     {% endif %}
-
-                    <h2>Submit your Model</h2>
+                    <h3>Submit your Model for {{ competition.name }}</h3>
                     <hr>
                     <form method="POST" enctype="multipart/form-data">
                         {% csrf_token %}

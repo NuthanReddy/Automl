@@ -1,4 +1,5 @@
 {% extends 'comp/base.html' %}
+{% load cust_tags %}
 {% block title %}{{ Competitions }}{% endblock %}
 {% block competitions_active %}active{% endblock %}
 
@@ -36,24 +37,25 @@
                         {% if error_message %}
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %}
-                        <table class="table">
-                            <thead>
                             <h3>Competition Description
-                                {% if not registered %}
+                                {% if not request.user|is_registered:competition %}
                                     <button class="btn btn-primary pull-right btn-sm RbtnMargin">
                                         <a style="color: white; text-decoration: none;"
                                            href="{% url 'comp:register' competition.id %}">
                                             Register
                                         </a>
                                     </button>
+                                {% else %}
+                                    <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
+                                        <a href="{% url 'comp:submit' competition.id %}"
+                                           style="text-decoration: none; color: white;">
+                                            Submit your Model
+                                        </a>
+                                    </button>
                                 {% endif %}
                             </h3>
                             <hr>
-                            </thead>
-                            <tbody>
-                            {{ competition.desc }}
-                            </tbody>
-                        </table>
+                        <p>{{ competition.desc|linebreaks }}</p>
                     </div>
                 </div>
 

@@ -21,6 +21,15 @@ def entries(user, comp):
     return Submission.objects.filter(comp=comp, user=user).count()
 
 
+@register.filter
+def is_registered(user, comp):
+    try:
+        Registration.objects.get(comp=comp, user=user)
+        return True
+    except Registration.DoesNotExist:
+        return False
+
 register.filter('comp_all', comp_all)
 register.filter('rank', rank)
 register.filter('entries', entries)
+register.filter('is_registered', is_registered)

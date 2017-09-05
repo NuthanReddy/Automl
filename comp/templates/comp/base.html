@@ -43,9 +43,12 @@
                             <a data-toggle="dropdown" class="dropdown-toggle">
                                 <span></span>
                                 <small>Welcome,</small>
-                                {{ user.username }}
+                                {{ user.first_name }}
                             </a>
                         </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right">
+                        <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
                     </ul>
                 {% else %}
                     <ul class="nav navbar-nav">

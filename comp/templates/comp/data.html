@@ -1,4 +1,5 @@
 {% extends 'comp/base.html' %}
+{% load cust_tags %}
 {% block title %}{{ Competitions }}{% endblock %}
 
 {% block body %}
@@ -33,27 +34,31 @@
                         {% if error_message %}
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %}
-                        <table class="table">
-                            <thead>
                             <h3>Competition Data</h3>
                             <hr>
-                            </thead>
-                            <tbody>
-                            <button type="button" class="btn btn-success btn-md">
+                        {% if user|is_registered:competition %}
+                            <button class="btn btn-success btn-md">
                                 <a style="text-decoration:none; color:white;" target="_blank"
                                    href="{{ competition.train.url }}">
-                                    <span class="glyphicon glyphicon-download-alt"></span>Training Data
+                                    <span class="glyphicon glyphicon-download-alt"></span> Training Data
                                 </a>
                             </button>
-                            &nbsp
-                            <button type="button" class="btn btn-success btn-md">
+                            <button class="btn btn-success btn-md">
                                 <a style="text-decoration:none; color: white;" target="_blank"
                                    href="{{ competition.test.url }}">
-                                    <span class="glyphicon glyphicon-download-alt"></span>Test Data
+                                    <span class="glyphicon glyphicon-download-alt"></span> Test Data
                                 </a>
                             </button>
-                            </tbody>
-                        </table>
+                            <button class="btn btn-success btn-md">
+                                <a style="text-decoration:none; color: white;" target="_blank"
+                                   href="{{ competition.sample.url }}">
+                                    <span class="glyphicon glyphicon-download-alt"></span> Sample Submission
+                                </a>
+                            </button>
+                        {% else %}
+                            <p>Please <a href="{% url 'comp:detail' competition.id %}">register</a> to gain access to
+                                Data</p>
+                        {% endif %}
                     </div>
                 </div>
             </div>

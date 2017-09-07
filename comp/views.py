@@ -1,5 +1,5 @@
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from comp.forms import SubmitForm
 from comp.models import Registration, Competition, Submission
 from pandas import read_table
@@ -27,23 +27,26 @@ def index(request):
 
 
 def detail(request, competition_id):
+    anon = request.user.is_anonymous()
     competition = get_object_or_404(Competition, pk=competition_id)
-    return render(request, 'comp/detail.html', {'competition': competition})
+    return render(request, 'comp/detail.html', {'competition': competition, 'anon': anon})
 
 
 def data(request, competition_id):
+    anon = request.user.is_anonymous()
     competition = get_object_or_404(Competition, pk=competition_id)
-    return render(request, 'comp/data.html', {'competition': competition})
+    return render(request, 'comp/data.html', {'competition': competition, 'anon': anon})
 
 
 def score(request, competition_id):
+    anon = request.user.is_anonymous()
     competition = get_object_or_404(Competition, pk=competition_id)
-    subs = Submission.objects.filter(comp=competition).order_by('score').reverse()
     if request.method == 'GET':
-        args = {'competition': competition, 'submissions': subs}
+        subs = Submission.objects.filter(comp=competition).distinct('user').order_by('user', 'score').reverse()
+        args = {'competition': competition, 'submissions': subs, 'anon': anon}
         return render(request, 'comp/score.html', args)
     elif request.method == 'POST':
-        return render(request, 'comp/submit.html', {'competition': competition})
+        return render(request, 'comp/submit.html', {'competition': competition, 'anon': anon})
 
 
 @login_required
@@ -91,13 +94,13 @@ def submit(request, competition_id):
                                      nrows=None, skip_blank_lines=True)
                 vcols = v_table.columns
                 if pcols.all() == vcols.all():
-                    newsub.score = round(1 / mean_squared_error(v_table, p_table, multioutput='raw_values')[-1], 2)
+                    newsub.score = 1 / (mean_squared_error(v_table, p_table, multioutput='raw_values')[-1] + 0.01)
                 else:
                     args = {'form': form, 'competition': competition,
                             'error_message': 'Header Columns does not match in uploaded submission'}
                     return render(request, 'comp/submit.html', args)
             newsub.save()
-            subs = Submission.objects.filter(comp=newsub.comp).order_by('score').reverse()
+            subs = Submission.objects.filter(comp=newsub.comp).distinct('user').order_by('user', 'score').reverse()
             return render(request, 'comp/score.html', {'competition': competition, 'submissions': subs})
         else:
             args = {'form': form}

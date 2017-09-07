@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('file_submission', models.FileField(default='', upload_to='')),
                 ('time', models.DateTimeField(blank=True, default=django.utils.timezone.now, null=True)),
-                ('score', models.DecimalField(decimal_places=2, default=0, max_digits=100)),
+                ('score', models.DecimalField(decimal_places=2, default=0, max_digits=64)),
                 ('language', models.CharField(
                     choices=[('Python', 'Python'), ('C', 'C'), ('C++', 'C++'), ('R', 'R'), ('Python3', 'Python3'),
                              ('Scala', 'Scala')], default='Python', max_length=100)),

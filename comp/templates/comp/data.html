@@ -34,9 +34,12 @@
                         {% if error_message %}
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %}
-                            <h3>Competition Data</h3>
-                            <hr>
-                        {% if user|is_registered:competition %}
+                        <h3>Competition Data</h3>
+                        <hr>
+                        {% if anon %}
+                            <p>Please <a href="{% url 'comp:detail' competition.id %}">register</a> to gain access to
+                                Data</p>
+                        {% elif request.user|is_registered:competition %}
                             <button class="btn btn-success btn-md">
                                 <a style="text-decoration:none; color:white;" target="_blank"
                                    href="{{ competition.train.url }}">

@@ -7,8 +7,8 @@ from accounts.models import UserProfile
 
 class RegistrationForm(UserCreationForm):
     email = forms.EmailField(required=True)
-    location = forms.CharField(required=True)
-    phone = forms.IntegerField(required=False)
+    location = forms.CharField(required=False)
+    phone = forms.CharField(required=False)
 
     class Meta:
         model = User

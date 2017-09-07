@@ -16,7 +16,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField(User)
     description = models.CharField(max_length=100, default='')
     location = models.CharField(default='', max_length=100, null=True, blank=True)
-    phone = models.IntegerField(default=0, null=True, blank=True)
+    phone = models.CharField(default=0, max_length=15, null=True, blank=True)
     image = models.ImageField(default='profile_image/propic.jpg', upload_to='profile_image', blank=True)
 
     objects = UserProfileManager()

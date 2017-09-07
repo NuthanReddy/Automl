@@ -38,13 +38,15 @@
                             <p><strong>{{ error_message }}</strong></p>
                         {% endif %}
                         <h3>Leaderboard
-                            {% if request.user|is_registered:competition %}
-                                <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
-                                    <a href="{% url 'comp:submit' competition.id %}"
-                                       style="text-decoration: none; color: white;">
-                                        Submit your Model
-                                    </a>
-                                </button>
+                            {% if not anon %}
+                                {% if request.user|is_registered:competition %}
+                                    <button class="btn btn-primary pull-right btn-sm RbtnMargin" type="button">
+                                        <a href="{% url 'comp:submit' competition.id %}"
+                                           style="text-decoration: none; color: white;">
+                                            Submit your Model
+                                        </a>
+                                    </button>
+                                {% endif %}
                             {% endif %}
                         </h3>
                         <hr>

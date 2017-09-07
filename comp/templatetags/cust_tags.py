@@ -13,7 +13,7 @@ def comp_all(comp):
 @register.filter
 def rank(comp, user):
     max_score = Submission.objects.filter(user=user).order_by('score').last()
-    return Submission.objects.filter(comp=comp).filter(score__gt=max_score.score).count() + 1
+    return Submission.objects.filter(comp=comp).filter(score__gt=max_score.score).distinct().count() + 1
 
 
 @register.filter

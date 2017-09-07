@@ -8,7 +8,7 @@ LANG = (('Python', 'Python'), ('C', 'C'), ('C++', 'C++'), ('R', 'R'), ('Python3'
 ALGO = (('Reg', 'Regression'), ('LogReg', 'Logistic Regression'), ('RandF', 'Random Forest'),
         ('KNN', 'K - Nearest Neighbour'), ('NN', 'Neural Networks'), ('ACO', 'Ant Colony Optimization'),
         ('SVM', 'Support Vector Machines'), ('PSA', 'Particle Swarm Algorithm'), ('Oth', 'Other'))
-
+SCORING_METH = (('Inv RMSE', 'Inverse RMSE'), ('DIff', 'Simple Difference'))
 
 #
 # class Team(models.Model):
@@ -30,11 +30,11 @@ class Competition(models.Model):
     team_size = models.IntegerField(default=1)
     train = models.FileField(default='')
     test = models.FileField(default='')
-    valid = models.FileField(default='', blank=True, null=True)
-    sample = models.FileField(default='', blank=True, null=True)
+    valid = models.FileField(default='')
+    sample = models.FileField(default='')
     train2 = models.FileField(default='', blank=True, null=True)
     test2 = models.FileField(default='', blank=True, null=True)
-    scoring_formula = models.Expression()
+    scoring_formula = models.CharField(default='Inv RMSE', max_length=50, choices=SCORING_METH)
     status = models.CharField(default="Active", max_length=1, choices=COMP_STATUS)
     start = models.DateTimeField(default=timezone.now, blank=True, null=True)
     end = models.DateTimeField(blank=True, null=True)
@@ -58,7 +58,7 @@ class Submission(models.Model):
     user = models.ForeignKey(User)
     comp = models.ForeignKey(Competition)
     time = models.DateTimeField(default=timezone.now, blank=True, null=True)
-    score = models.DecimalField(default=0, max_digits=100, decimal_places=2)
+    score = models.DecimalField(default=0, max_digits=64, decimal_places=2)
     language = models.CharField(default="Python", max_length=100, choices=LANG)
     algo = models.CharField(default="Reg", max_length=100, choices=ALGO)
 

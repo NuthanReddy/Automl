@@ -94,7 +94,7 @@ def submit(request, competition_id):
                     newsub.score = round(1 / mean_squared_error(v_table, p_table, multioutput='raw_values')[-1], 2)
                 else:
                     args = {'form': form, 'competition': competition,
-                            'error_message': 'Columns does not match in uploaded submission'}
+                            'error_message': 'Header Columns does not match in uploaded submission'}
                     return render(request, 'comp/submit.html', args)
             newsub.save()
             subs = Submission.objects.filter(comp=newsub.comp).order_by('score').reverse()

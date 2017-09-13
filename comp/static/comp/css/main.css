@@ -2,16 +2,243 @@
    Author's custom styles
    ========================================================================== */
 
+body {
+    font-family: 'SF Pro Text', 'Myriad Set Pro', 'SF Pro Icons', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 12px;
+}
 
+/* nav bar */
+#register {
+    padding: 13px 15px;
+}
 
+.navbar {
+    position: fixed;
+    z-index: 100;
+    width: 100%;
+    border-radius: 0;
+    border-bottom: #dbdbdb 1px solid;
+    box-shadow: #737373 5px;
+}
 
+.navbar-brand {
+    font-family: 'Roboto Slab', serif;
+    font-size: 18px !important;
+    color: #4fa7f7 !important;
+}
 
+.navbar-brand:hover {
+    text-shadow: 0 0 0 #4fa7f7, 0 0 0 #346da1;
+}
 
+.navbar-toggle {
+    border: none;
+}
 
+.navbar-nav > li > a {
+    font-size: 14px;
+    color: #dbdbdb !important;
+}
 
+.navbar-nav > li > a:hover {
+    color: #FFFFFF !important;
+}
 
+.jumbotron {
+    padding-top: 100px;
+}
 
+.thumbnail {
+    position: relative;
+    overflow: hidden;
+}
 
+.caption {
+    position: relative;
+    background: rgba(251, 255, 234, 0.75);
+    text-align: center;
+    color: #000000 !important;
+}
+
+.bg-1 {
+    background-color: rgba(11, 0, 10, 0.83); /* Purple */
+    color: #ffffff;
+}
+
+.bg-2 {
+    background-color: #474e5d; /* Dark Blue */
+    color: #ffffff;
+}
+
+.bg-3 {
+    background-color: #ffffff; /* White */
+    color: #555555;
+}
+
+.bg-4 {
+    background-color: #3D4045;
+    color: #fff;
+}
+
+.button {
+    padding: 2px 10px !important;
+    font-weight: 400;
+    box-shadow: none;
+    min-width: 70px;
+    color: black !important;
+    border: 1px solid #4fa7f7;
+    border-radius: 3px;
+    cursor: pointer;
+    background: #4fa7f7;
+}
+
+.button:hover {
+    background: #4797df !important;
+    border: 1px solid #4797df;
+}
+
+.footer {
+    position: fixed;
+    margin-bottom: 0;
+    min-height: 100px;
+    border-top: 1px solid #d6d6d6;
+    background-color: #fff;
+    padding: 10px 40px;
+    text-align: center;
+    overflow: hidden;
+}
+
+/* adjust according to screen size */
+@media screen and (max-width: 1300px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .overlay-card {
+        max-width: 100%;
+        padding: 0;
+    }
+
+    .overlay-image {
+        height: 68%;
+        width: 100%;
+    }
+
+    .overlay-desc {
+        width: 100%;
+        height: 32%;
+        margin: 0;
+        padding: 20px 40px;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .container {
+        max-width: 100%;
+    }
+
+    .overlay-card {
+        max-width: 522px;
+        min-width: 310px;
+    }
+
+    .overlay-image {
+        width: 100%;
+        height: 55%;
+        max-height: 1000px;
+        margin: 0;
+    }
+
+    .post-image {
+        width: 396px;
+        height: 330px;
+        border: 0;
+        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
+        background-size: contain !important;
+    }
+
+    .overlay-desc {
+        width: 100%;
+        height: 45%;
+        padding: 20px;
+    }
+
+    .nav-links {
+        width: 0;
+    }
+
+    .menu-background {
+        left: 8%;
+    }
+
+    .menu-card {
+        left: 2px;
+        height: 360px;
+    }
+
+    .menu-content .sub-nav-links {
+        height: 164px;
+        border-bottom: 1px solid #ccc;
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .image {
+        width: calc(100% - 40px);
+        height: 0;
+        padding-bottom: 60%;
+    }
+
+    .menu-content .sign-links {
+        height: 64px;
+        border-top: 1px solid #ccc;
+    }
+
+    .menu-card {
+        height: 425px;
+    }
+
+    .sign-div {
+        width: 0;
+    }
+
+    .nav-search.active {
+        -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1);
+        transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1);
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .overlay-card {
+        height: 500px;
+    }
+
+    .post-image {
+        width: 80%;
+        max-width: 288px;
+        height: 240px;
+    }
+
+    .overlay-desc {
+        padding: 14px;
+    }
+
+    .profile-card-stats {
+        height: 0;
+        padding: 0;
+    }
+
+    .profile-pic {
+        height: 140px;
+        width: 140px;
+        top: -70px;
+    }
+
+    .profile-card {
+        padding-top: 70px;
+        margin: 50px auto 30px;
+    }
+}
 
 
 

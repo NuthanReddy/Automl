@@ -1,81 +1,72 @@
 <html>
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{% block title %}Data Crunch{% endblock %}</title>
     {% load staticfiles %}
-    <link rel="shortcut icon" type="image/png" href="{% static 'favicon.ico' %}"/>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-    <link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
-    <link rel="stylesheet" type="text/css" href="{% static 'comp/css/style.css' %}"/>
-    <link rel="stylesheet" type="mlearn/main.css" href="{% static 'comp/css/main.css' %}"/>
+    <link href="https://fonts.googleapis.com/css?family=Sirin+Stencil" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Oswald:500|Roboto+Slab:700" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'comp/css/main.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'comp/css/apple_fonts.css' %}"/>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    <script src="{% static 'comp/js/main.js' %}"></script>
-    <script src="{% static 'comp/js/automl.js' %}"></script>
-    <link rel="stylesheet" type="mlearn/app_new.css" href="{% static 'comp/css/app_new.css' %}"/>
-    <link rel="stylesheet" type="text/css" href="{% static 'comp/css/automl.css' %}"/>
 </head>
 <body>
-<div class="container">
-    <nav class="navbar navbar-default">
-        <div class="container-fluid">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
-                        aria-expanded="false" aria-controls="navbar">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                <a class="navbar-brand" href="/">Data Crunch</a>
-            </div>
-            <div id="navbar" class="navbar-collapse collapse">
-                {% if user.is_authenticated %}
-                    <ul class="nav navbar-nav">
-                        <li><a href="{% url 'comp:index' %}">Competitions</a></li>
-                        <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
-                        {% block nav %}
-                        {% endblock %}
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a data-toggle="dropdown" class="dropdown-toggle">
-                                <span></span>
-                                <small>Welcome,</small>
-                                {{ user.first_name }}
-                            </a>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
-                    </ul>
-                {% else %}
-                    <ul class="nav navbar-nav">
-                        <li><a href="{% url 'comp:index' %}">Competitions</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a href="{% url 'accounts:login' %}">Login</a></li>
-                        <li><a href="{% url 'accounts:register' %}">Register</a></li>
-                    </ul>
-                {% endif %}
-            </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-    </nav>
-</div>
+<nav class="navbar navbar-inverse">
+    <div class="container">
+        <!-- header -->
+        <div class="navbar-header">
+            <button class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Data Crunch</a>
+        </div>
+        <!-- Items -->
+        <div id="navbar" class="navbar-collapse collapse">
+            {% if user.is_authenticated %}
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'comp:index' %}">Competitions</a></li>
+                    <li><a href="{% url 'accounts:view_profile' %}">Profile</a></li>
+                    {% block nav %}
+                    {% endblock %}
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                        <a data-toggle="dropdown" class="dropdown-toggle">
+                            <span></span>
+                            <small>Welcome,</small>
+                            {{ user.first_name }}
+                        </a>
+                    </li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'accounts:logout' %}">Log out</a></li>
+                </ul>
+            {% else %}
+                <ul class="nav navbar-nav">
+                    <li><a href="{% url 'comp:index' %}">Competitions</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{% url 'accounts:login' %}">LogIn</a></li>
+                    <li><a id="register" href="{% url 'accounts:register' %}">
+                        <button class="button">SignUp</button>
+                    </a></li>
+                </ul>
+            {% endif %}
+        </div>
+    </div>
+</nav>
 {% block body %}
     <h1>Base</h1>
 {% endblock %}
 <footer class="container-fluid bg-4 text-center" style="padding-top: 20px;">
-    <p>Data Crunch - One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary
+    <p>One machine can do the work of fifty ordinary men. No machine can do the work of one extraordinary
         man</p>
-    <p style="color: #4fa7f7;">A platform to excel in Data Crunching</p>
+    <p style="color: #4fa7f7;">© Data Crunch | A platform to excel in Data Crunching</p>
 </footer>
 </body>
-<script
-        src="https://code.jquery.com/jquery-3.1.1.min.js"
-        integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-        crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
-        integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
-        crossorigin="anonymous"></script>
 </html>

@@ -7,9 +7,21 @@ body {
     font-size: 12px;
 }
 
+a {
+    text-decoration: none;
+}
+
 /* nav bar */
 #register {
     padding: 13px 15px;
+}
+
+#comp-img {
+    height: 100px;
+}
+
+.active {
+    border-bottom: #4797df 2px;
 }
 
 .navbar {
@@ -46,18 +58,22 @@ body {
 
 .jumbotron {
     padding-top: 100px;
+    margin-bottom: 0;
+}
+
+.page-header {
+    margin: 20px 0 10px 0;
 }
 
 .thumbnail {
     position: relative;
     overflow: hidden;
+    padding: 0;
+    border-radius: 5px;
 }
 
 .caption {
     position: relative;
-    background: rgba(251, 255, 234, 0.75);
-    text-align: center;
-    color: #000000 !important;
 }
 
 .bg-1 {
@@ -107,141 +123,3 @@ body {
     text-align: center;
     overflow: hidden;
 }
-
-/* adjust according to screen size */
-@media screen and (max-width: 1300px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .overlay-card {
-        max-width: 100%;
-        padding: 0;
-    }
-
-    .overlay-image {
-        height: 68%;
-        width: 100%;
-    }
-
-    .overlay-desc {
-        width: 100%;
-        height: 32%;
-        margin: 0;
-        padding: 20px 40px;
-    }
-}
-
-@media screen and (max-width: 1000px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .overlay-card {
-        max-width: 522px;
-        min-width: 310px;
-    }
-
-    .overlay-image {
-        width: 100%;
-        height: 55%;
-        max-height: 1000px;
-        margin: 0;
-    }
-
-    .post-image {
-        width: 396px;
-        height: 330px;
-        border: 0;
-        box-shadow: 0 0 0 rgba(0, 0, 0, 0);
-        background-size: contain !important;
-    }
-
-    .overlay-desc {
-        width: 100%;
-        height: 45%;
-        padding: 20px;
-    }
-
-    .nav-links {
-        width: 0;
-    }
-
-    .menu-background {
-        left: 8%;
-    }
-
-    .menu-card {
-        left: 2px;
-        height: 360px;
-    }
-
-    .menu-content .sub-nav-links {
-        height: 164px;
-        border-bottom: 1px solid #ccc;
-    }
-}
-
-@media screen and (max-width: 630px) {
-    .image {
-        width: calc(100% - 40px);
-        height: 0;
-        padding-bottom: 60%;
-    }
-
-    .menu-content .sign-links {
-        height: 64px;
-        border-top: 1px solid #ccc;
-    }
-
-    .menu-card {
-        height: 425px;
-    }
-
-    .sign-div {
-        width: 0;
-    }
-
-    .nav-search.active {
-        -webkit-transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1);
-        transition: 0.3s cubic-bezier(0.75, 0, 0.2, 1);
-    }
-}
-
-@media screen and (max-width: 550px) {
-    .overlay-card {
-        height: 500px;
-    }
-
-    .post-image {
-        width: 80%;
-        max-width: 288px;
-        height: 240px;
-    }
-
-    .overlay-desc {
-        padding: 14px;
-    }
-
-    .profile-card-stats {
-        height: 0;
-        padding: 0;
-    }
-
-    .profile-pic {
-        height: 140px;
-        width: 140px;
-        top: -70px;
-    }
-
-    .profile-card {
-        padding-top: 70px;
-        margin: 50px auto 30px;
-    }
-}
-
-
-
-
-
-

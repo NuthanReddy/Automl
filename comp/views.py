@@ -5,20 +5,16 @@ from comp.models import Registration, Competition, Submission
 from pandas import read_table
 from sklearn.metrics import mean_squared_error
 
+# from pyspark.sql import *
+
+
 ACCEPTED_FILE_TYPES = ['csv']
 
-
-# from pyspark.sql import SparkSession
-# spark = SparkSession \
-#    .builder \
-#    .appName("Data Crunch") \
-#    .config("spark.some.config.option", "some-value") \
-#    .getOrCreate()
-
-# spark = SparkSession.builder.master("local").appName("Data Crunch").\
-#    config("spark.sql.warehouse.dir", "hdfs://localhost:8020/user/spark/warehouse").getOrCreate()
-
 # df = spark.read.csv.options(header='true', inferSchema='true').load("examples/src/main/resources/people.json")
+# spark = SparkSession.builder.master("local").appName("Data Crunch").enableHiveSupport().getOrCreate()
+# df = spark.read.json('hdfs://localhost:9000/user/nuthan/package-lock.json')
+# df.show()
+# df.printSchema()
 
 
 def index(request):
